@@ -4,6 +4,12 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+	"repositories": [
+		{
+			"type": "path",
+			"url": "./laravel_modules/nova"
+		}
+	],
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
@@ -12,7 +18,8 @@
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+		"laravel/nova": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
