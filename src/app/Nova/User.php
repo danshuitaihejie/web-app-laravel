@@ -7,7 +7,10 @@ use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
-
+use Laravel\Nova\Fields\MorphToMany;
+use Vyuldashev\NovaPermission\PermissionBooleanGroup;
+use Vyuldashev\NovaPermission\RoleBooleanGroup;
+use Vyuldashev\NovaPermission\RoleSelect;
 class User extends Resource
 {
     /**
@@ -60,6 +63,10 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
+
+            MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class),
+            MorphToMany::make('Permissions', 'permissions', \Vyuldashev\NovaPermission\Permission::class),
+ 
         ];
     }
 
