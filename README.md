@@ -14,3 +14,4 @@ php版本：php-8.1.3-nts
 >php artisan serve //启动服务
 ````
 4. 项目启动目录为 src\public，支持 Apache 或 Nginx 启动。
+5. 主页访问地址为:http://localhost:8000, Nova控制台访问地址为: http://localhost:8000/nova/dashboards/main
