@@ -15,7 +15,13 @@ class CreateDiagramsTable extends Migration
     {
         Schema::create('diagrams', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('description');
+            $table->string('content');
+            $table->string('author_id');
+            $table->string('image');
+            $table->boolean('public');
+            $table->timestamps('updated_at');
         });
     }
 
