@@ -10,5 +10,7 @@ php版本：php-8.1.3-nts
 >composer install
 
 >php artisan migrate //数据迁移生成数据库和种子数据
+
+>php artisan serve //启动服务
 ````
 4. 项目启动目录为 src\public，支持 Apache 或 Nginx 启动。
