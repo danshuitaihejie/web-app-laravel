@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Diagram;
 use Livewire\Component;
 
-class Crud extends Component
+class DiagramComponent extends Component
 {
     public $diagrams, $name,
         $description,
@@ -17,7 +17,7 @@ class Crud extends Component
     public function render()
     {
         $this->diagrams = Diagram::all();
-        return view('livewire.crud');
+        return view('livewire.diagram');
     }
 
     public function create()

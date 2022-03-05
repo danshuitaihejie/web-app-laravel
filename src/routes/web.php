@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Livewire\Crud;
+use App\Http\Livewire\DiagramComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +22,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('diagrams', Crud::class);
+Route::get('diagrams', DiagramComponent::class);
