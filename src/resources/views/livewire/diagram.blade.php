@@ -36,7 +36,9 @@
                     @foreach($diagrams as $diagram)
                     <tr>
                         <td class="border px-4 py-2">{{ $diagram->id }}</td>
-                        <td class="border px-4 py-2">{{ $diagram->name }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="/diagrams/{{ $diagram->id }}">{{ $diagram->name }}</a>
+                        </td>
                         <td class="border px-4 py-2">{{ $diagram->description }}</td>
                         <td class="border px-4 py-2">{{ $diagram->public}}</td>
                         <td class="border px-4 py-2">
