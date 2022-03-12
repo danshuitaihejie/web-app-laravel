@@ -59,9 +59,6 @@
         ],
         "data-generate": [
             "php artisan migrate"
-        ],
-        "start": [
-            "php artisan serve"
         ]
     },
     "extra": {
