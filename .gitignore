@@ -1,2 +1,6 @@
 src/composer.phar
 .idea
+src/public/css/app.css
+src/public/js/app.js
+src/public/js/app.js.LICENSE.txt
+src/public/mix-manifest.json
