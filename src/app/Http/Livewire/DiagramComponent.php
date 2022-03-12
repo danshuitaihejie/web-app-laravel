@@ -20,6 +20,11 @@ class DiagramComponent extends Component
         return view('livewire.diagram');
     }
 
+    public function show($id)
+    {
+        return view('diagrams.show', ['diagram' => Diagram::findOrFail($id)]);
+    }
+
     public function create()
     {
         $this->resetCreateForm();

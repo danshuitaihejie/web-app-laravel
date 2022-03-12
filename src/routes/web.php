@@ -23,3 +23,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('diagrams', DiagramComponent::class);
+Route::get('diagrams/{id}', [DiagramComponent::class, 'show']);
