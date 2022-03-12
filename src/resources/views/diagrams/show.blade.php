@@ -3,6 +3,14 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Diagram') }}
         </h2>
+        
+    <link href="/sequence-viewer/css/app.601d2ada.css" rel="preload" as="style">
+    <link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="preload" as="style">
+    <link href="/sequence-viewer/js/app.96bc52c6.js" rel="preload" as="script">
+    <link href="/sequence-viewer/js/chunk-vendors.a42931a3.js" rel="preload" as="script">
+    <link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="stylesheet">
+    <link href="/sequence-viewer/css/app.601d2ada.css" rel="stylesheet">
+        
     </x-slot>
     
     <div>
@@ -27,4 +35,15 @@
           </div>
         </div>
     </div>
+
+    <div id="app"></div>
+
+    <script src="/sequence-viewer/js/chunk-vendors.a42931a3.js"></script>
+    <script src="/sequence-viewer/js/app.96bc52c6.js"></script>
+    <script>
+        let app = document.getElementById('app');
+        if (app.__vue__) {
+            app.__vue__.$store.commit('code',`{{ $diagram->content }}`)
+        }
+    </script>
 </x-app-layout>
