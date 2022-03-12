@@ -11,6 +11,7 @@
         "php serve": "php artisan serve"
     },
     "devDependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.0",
         "@tailwindcss/forms": "^0.4.0",
         "@tailwindcss/typography": "^0.5.0",
         "alpinejs": "^3.0.6",
