@@ -11,9 +11,9 @@ php版本：php-8.1.3-nts
 
 >php artisan migrate //数据迁移生成数据库和种子数据
 
->cd sequence-viewer && yarn install && yarn build
+>cd sequence-viewer && yarn install && yarn build && yarn cp
 
->Manually update the js/css hash in `resources/views/diagrams/show.blade.php` to be the same as `public/sequence-viewer/index.html`
+>Manually update the js/css hash in `resources/views/diagrams/show.blade.php` to be the same as `sequence-viewer/dist/index.html`
 
 >php artisan serve //启动服务
 ````

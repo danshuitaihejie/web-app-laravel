@@ -1,3 +1,4 @@
 module.exports = {
-    outputDir: '../public/sequence-viewer'
+    outputDir: 'dist',
+    assetsDir: 'sequence-viewer'
 }
