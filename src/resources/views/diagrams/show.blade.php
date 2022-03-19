@@ -8,16 +8,8 @@
 <link href="/sequence-viewer/css/app.601d2ada.css" rel="stylesheet">
 
 <div class="bg-white">
-  <!--
-    Mobile menu
-
-    Off-canvas menu for mobile, show/hide based on off-canvas menu state.
-  -->
-
   <main class="pt-10 sm:pt-16">
-    
 
-    <!-- Image gallery -->
     <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-8">
 
       <div id="app"></div>
@@ -33,7 +25,6 @@
 
     </div>
 
-    <!-- Product info -->
     <div class="max-w-2xl mx-auto pt-10 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
       <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
         <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{{ $diagram->name }}</h1>
@@ -51,30 +42,19 @@
             <fieldset class="mt-4">
               <legend class="sr-only">Choose a color</legend>
               <div class="flex items-center space-x-3">
-                <!--
-                  Active and Checked: "ring ring-offset-1"
-                  Not Active and Checked: "ring-2"
-                -->
+                
                 <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
                   <input type="radio" name="color-choice" value="White" class="sr-only" aria-labelledby="color-choice-0-label">
                   <p id="color-choice-0-label" class="sr-only">White</p>
                   <span aria-hidden="true" class="h-8 w-8 bg-white border border-black border-opacity-10 rounded-full"></span>
                 </label>
 
-                <!--
-                  Active and Checked: "ring ring-offset-1"
-                  Not Active and Checked: "ring-2"
-                -->
                 <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
                   <input type="radio" name="color-choice" value="Gray" class="sr-only" aria-labelledby="color-choice-1-label">
                   <p id="color-choice-1-label" class="sr-only">Gray</p>
                   <span aria-hidden="true" class="h-8 w-8 bg-gray-200 border border-black border-opacity-10 rounded-full"></span>
                 </label>
 
-                <!--
-                  Active and Checked: "ring ring-offset-1"
-                  Not Active and Checked: "ring-2"
-                -->
                 <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-900">
                   <input type="radio" name="color-choice" value="Black" class="sr-only" aria-labelledby="color-choice-2-label">
                   <p id="color-choice-2-label" class="sr-only">Black</p>
@@ -88,7 +68,6 @@
       </div>
 
       <div class="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <!-- Description and details -->
         <div>
           <h3 class="sr-only">Description</h3>
 
