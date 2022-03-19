@@ -82,7 +82,7 @@ class DiagramComponent extends Component
         $this->name = $diagram->name;
         $this->description = $diagram->description;
         $this->content = $diagram->content;
-        $this->author_id = $diagram->author_id;
+        $this->author_id = auth()->user()->name ?? null;
         $this->image = $diagram->image;
         $this->public = $diagram->public;
 
