@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class DiagramComponent extends Component
 {
-    public $diagrams, $name,
+    public $diagrams, $diagramId, $name,
         $description,
         $content, $author_id,
         $image, $public,
@@ -43,6 +43,7 @@ class DiagramComponent extends Component
 
     private function resetCreateForm()
     {
+        $this->diagramId = '';
         $this->name = '';
         $this->description = '';
         $this->content = '';
@@ -59,11 +60,11 @@ class DiagramComponent extends Component
             'content' => 'required|min:3',
         ]);
 
-        Diagram::updateOrCreate(['id' => $this->id], [
+        Diagram::updateOrCreate(['id' => $this->diagramId], [
             'name' => $this->name,
             'description' => $this->description,
             'content' => $this->content,
-            'author_id' => '$this->author_id',
+            'author_id' => $this->author_id,
             'image' => '$this->image',
             'public' => true,
         ]);
@@ -77,7 +78,7 @@ class DiagramComponent extends Component
     public function edit($id)
     {
         $diagram = Diagram::findOrFail($id);
-        $this->id = $id;
+        $this->diagramId = $id;
         $this->name = $diagram->name;
         $this->description = $diagram->description;
         $this->content = $diagram->content;
