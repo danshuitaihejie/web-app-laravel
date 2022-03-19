@@ -47,7 +47,7 @@ class DiagramComponent extends Component
         $this->name = '';
         $this->description = '';
         $this->content = '';
-        $this->author_id = '';
+        $this->author_id = auth()->user()->name ?? null;
         $this->image = '';
         $this->public = '';
     }
