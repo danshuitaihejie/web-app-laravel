@@ -1,17 +1,23 @@
 # web-app-laravel
 
-php版本：php-8.1.3-nts
-1. 把 nova 和 spark-stripe 两个项目文件夹放入 src\laravel_modules 中
-2. 创建 src\database\database.sqlite 空文件 //为方便开发运行，目前使用的是sqlite数据库，可以在 src/.env 中修改DB_CONNECTION字段进行变换要连接的数据库
-3. 执行cmd
-````
->cd src  //进入src目录
+php 版本：php-8.1.3-nts
+> 实际项目目录在 src 目录下，注意相关命令的执行路径
+---
+0. 切换工作目录到 `src` 目录 `cd scr`
+1. 把 `nova` 和 `spark-stripe` 两个私有项目文件夹放入 `laravel_modules` 中
+2. 使用命令 `touch database/database.sqlite` 创建 `database/database.sqlite` 空文件，方便本地测试 
+3. 复制 `.env.example` 到 `.env` ，并修改 `DB_CONNECTION` 为 `sqlite`, 注释掉 `DB_DATABASE` 字段，如果必要`DB_DATABASE`需要设置为`database.sqlite` 的绝对路径，不得设置相对路径。
+4. 安装依赖 `composer install`
+5. 写入数据库和种子数据 `php artisan migrate`
+6. 使用 Laravel Mix 编译 css 和 js 资源 `npm run dev`
+7. 启动服务 `php artisan serve`
 
->composer install
+项目启动后 root 目录为 `src/public`，支持 Apache 或 Nginx 启动。
 
->php artisan migrate //数据迁移生成数据库和种子数据
+主页访问地址为:http://localhost:8000
 
->php artisan serve //启动服务
-````
-4. 项目启动目录为 src\public，支持 Apache 或 Nginx 启动。
-5. 主页访问地址为:http://localhost:8000, Nova控制台访问地址为: http://localhost:8000/nova/dashboards/main
+Nova 控制台访问地址为: http://localhost:8000/nova/dashboards/main
+
+要测试网站后台功能，可通过注册页面注册任意用户，然后登录后台管理页面。
+
+> **注意**：每次修改 resources 目录下模板文件后，都需要使用 Laravel Mix 重新编译资源文件，以确保页面正常显示。

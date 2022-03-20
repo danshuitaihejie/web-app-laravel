@@ -1,15 +1,35 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+    <div class="flex justify-evenly py-5">
+        <x-jet-button>+ New Diagram</x-jet-button>
+        <x-jet-button>+ Import Diagram</x-jet-button>
+        <x-jet-button>+ Import Diagram12</x-jet-button>
+    </div>
+
+    <div class="!bg-white">
+        <div class="container py-1 mx-auto">
+            <div class="container py-1 mx-auto">
+                <x-jet-label>Explore:</x-jet-label>
+            </div>
+            <div class="flex justify-start py-5">
+                <x-jet-button>+ New Diagram</x-jet-button>
+                <x-jet-button>+ Import Diagram</x-jet-button>
+                <x-jet-button>+ Import Diagram12</x-jet-button>
             </div>
         </div>
     </div>
+
+    <div class="">
+        <div class="container py-1 mx-auto">
+            <div class="container py-1 mx-auto">
+                <x-jet-label>My Diagrams:</x-jet-label>
+            </div>
+            <div class="flex justify-start py-5">
+                <x-jet-button>+ New Diagram</x-jet-button>
+                <x-jet-button>+ Import Diagram</x-jet-button>
+                <x-jet-button>+ Import Diagram12</x-jet-button>
+            </div>
+        </div>
+    </div>
+
 </x-app-layout>
