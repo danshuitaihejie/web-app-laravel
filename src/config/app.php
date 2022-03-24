@@ -167,6 +167,11 @@ return [
          */
 
         /*
+        * Socialite Providers...
+        */
+        \SocialiteProviders\Manager\ServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
