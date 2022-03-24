@@ -21,7 +21,7 @@ class CreateDiagramsTable extends Migration
             $table->string('author_id');
             $table->string('image');
             $table->boolean('public');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 
