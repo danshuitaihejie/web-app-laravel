@@ -35,12 +35,7 @@ class WeiXinUserTest extends TestCase
         $this->assertSame(1,WeiXinUser::all()->count());
         $user = Auth::user();
         $this->assertNotNull($user);
-
-        $this->actingAs($user);
-        Livewire::test(DeleteUserForm::class)
-            ->set('password', '')
-            ->call('deleteUser');
-
+        $user->delete();
         $this->assertSame(0,WeiXinUser::all()->count());
     }
 
