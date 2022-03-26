@@ -8,7 +8,9 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
-        "php serve": "php artisan serve"
+        "php serve": "php artisan serve",
+        "build-sequence-core": "cd sequence-viewer && yarn install && yarn build && yarn cp",
+        "postbuild-sequence-core": "node utils/sequence-hash-matcher.js"
     },
     "devDependencies": {
         "@tailwindcss/aspect-ratio": "^0.4.0",

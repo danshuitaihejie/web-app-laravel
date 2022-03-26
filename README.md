@@ -1,26 +1,22 @@
 # web-app-laravel
 
 php 版本：php-8.1.3-nts
-> 实际项目目录在 src 目录下，注意相关命令的执行路径
+node 版本：node v16.14.0 lts/gallium
+
 ---
-0. 切换工作目录到 `src` 目录 `cd src`
-1. 把 `nova` 和 `spark-stripe` 两个私有项目文件夹放入 `laravel_modules` 中
-2. 使用命令 `touch database/database.sqlite` 创建 `database/database.sqlite` 空文件，方便本地测试 
-3. 复制 `.env.example` 到 `.env` ，并修改 `DB_CONNECTION` 为 `sqlite`, 注释掉 `DB_DATABASE` 字段，如果必要`DB_DATABASE`需要设置为`database.sqlite` 的绝对路径，不得设置相对路径。
-4. 安装依赖 `composer install`
-5. 写入数据库和种子数据 `php artisan migrate`
-6. 使用 Laravel Mix 编译 css 和 js 资源 `npm run dev`
-7. Run:
-    ```
-    cd sequence-viewer && yarn install && yarn build
-    ```
-8. Manually update the js/css hash in `resources/views/diagrams/show.blade.php` to be the same as `sequence-viewer/dist/index.html`
-9. Run `yarn production` or `npm run production`
-10. 启动服务 `php artisan serve`
+## 本地开发环境配置
+1. 把 `nova` 和 `spark-stripe` 两个私有项目文件夹放入 `laravel_modules` 中；
+2. 使用命令 `touch database/database.sqlite` 创建 `database/database.sqlite` 空文件，方便本地测试；
+3. 复制 `.env.example` 到 `.env` ，并修改 `DB_CONNECTION` 为 `sqlite`, 注释掉 `DB_DATABASE` 字段，（如果必要`DB_DATABASE`需要设置为`database.sqlite` 的绝对路径，不得设置相对路径）；
+4. 安装依赖 `composer install` 以及 `npm install`；
+5. 写入数据库和种子数据 `php artisan migrate`；
+6. 编译 UML 内核 `npm run build-sequence-core`；
+7. 使用 Laravel Mix 编译 css 和 js 资源 `npm run production`；
+8. 启动服务 `php artisan serve`。
 
 项目启动后 root 目录为 `src/public`，支持 Apache 或 Nginx 启动。
 
-主页访问地址为:http://localhost:8000
+主页访问地址为: http://localhost:8000
 
 Diagrams home page: http://localhost:8000/diagrams
 
@@ -28,4 +24,14 @@ Nova 控制台访问地址为: http://localhost:8000/nova/dashboards/main
 
 要测试网站后台功能，可通过注册页面注册任意用户，然后登录后台管理页面。
 
-> **注意**：每次修改 resources 目录下模板文件后，都需要使用 Laravel Mix 重新编译资源文件，以确保页面正常显示。
+> **注意**：每次修改 resources 目录下模板文件后，都需要使用 Laravel Mix 重新编译资源文件，以确保页面正常显示，或参考下文开启热更新功能。
+
+### Web UI 开发可开启热更新：
+在正常启动 PHP 服务后，可执行 `npm run hot` 命令开启热更新。开启后会弹出新的网页，端口默认为 3000，是原本 8000 的反向代理，该代理会自动监控所有 View 的变更并自动刷新页面。
+
+### sequence 脚本 Hash 同步：
+在 `utils/sequence-hash-matcher.js` 中，实现了一个自动同步 `sequence-viewer/dist/index.html` 到 `resources/views/diagrams/show.blade.php` 的功能，如果修改了相关格式，记得去改这个脚本。该脚本不需要手动执行，它已经在 `packages.json` 中设置为 `build-sequence-core` 的 post script 了。
+
+---
+
+> ⚠️ **注意**：每次 pull 新的代码后，推荐执行步骤 4-7 以确保动态生成的依赖数据为最新，这些数据不会提交到代码仓库。
