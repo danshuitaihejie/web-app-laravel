@@ -2,8 +2,8 @@
 
 <link href="/sequence-viewer/css/app.601d2ada.css" rel="preload" as="style">
 <link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.295c9c65.js" rel="preload" as="script">
-<link href="/sequence-viewer/js/chunk-vendors.a42931a3.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/app.c239cd2b.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/chunk-vendors.a8db43b4.js" rel="preload" as="script">
 <link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="stylesheet">
 <link href="/sequence-viewer/css/app.601d2ada.css" rel="stylesheet">
 
@@ -14,8 +14,8 @@
 
       <div id="app"></div>
 
-      <script src="/sequence-viewer/js/chunk-vendors.a42931a3.js"></script>
-      <script src="/sequence-viewer/js/app.295c9c65.js"></script>
+      <script src="/sequence-viewer/js/chunk-vendors.a8db43b4.js"></script>
+      <script src="/sequence-viewer/js/app.c239cd2b.js"></script>
       <script>
           let app = document.getElementById('app');
           if (app.__vue__) {
@@ -42,7 +42,7 @@
             <fieldset class="mt-4">
               <legend class="sr-only">Choose a color</legend>
               <div class="flex items-center space-x-3">
-                
+
                 <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
                   <input type="radio" name="color-choice" value="White" class="sr-only" aria-labelledby="color-choice-0-label">
                   <p id="color-choice-0-label" class="sr-only">White</p>
@@ -79,7 +79,7 @@
       </div>
 
     </div>
-    
+
   </main>
 
 </div>
