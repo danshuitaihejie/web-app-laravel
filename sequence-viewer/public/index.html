@@ -11,13 +11,19 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <button onclick="toggle()" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Toggle Mode</button>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
   <script>
-      let app = document.getElementById('app');
-      if (app.__vue__) {
-          app.__vue__.$store.commit('code',`$DSL_CODE`)
+      const app = document.getElementById('app');
+      const vue = app && app.__vue__;
+      vue && vue.$store.commit('code',`A.foo {
+  B.bar
+}`)
+
+      function toggle() {
+        vue && vue.$store.dispatch('toggleMode')
       }
   </script>
 </html>

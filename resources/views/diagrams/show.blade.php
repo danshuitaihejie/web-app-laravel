@@ -1,11 +1,11 @@
 <x-app-layout>
 
-<link href="/sequence-viewer/css/app.601d2ada.css" rel="preload" as="style">
-<link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.492b16ef.js" rel="preload" as="script">
-<link href="/sequence-viewer/js/chunk-vendors.a8db43b4.js" rel="preload" as="script">
-<link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="stylesheet">
-<link href="/sequence-viewer/css/app.601d2ada.css" rel="stylesheet">
+<link href="/sequence-viewer/css/app.1b100cf4.css" rel="preload" as="style">
+<link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="preload" as="style">
+<link href="/sequence-viewer/js/app.35c5011c.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/chunk-vendors.e8dcf893.js" rel="preload" as="script">
+<link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="stylesheet">
+<link href="/sequence-viewer/css/app.1b100cf4.css" rel="stylesheet">
 
 <div class="bg-white main-container">
   <main class="pt-10 sm:pt-16">
@@ -14,8 +14,8 @@
 
       <div id="app"></div>
 
-      <script src="/sequence-viewer/js/chunk-vendors.a8db43b4.js"></script>
-      <script src="/sequence-viewer/js/app.492b16ef.js"></script>
+      <script src="/sequence-viewer/js/chunk-vendors.e8dcf893.js"></script>
+      <script src="/sequence-viewer/js/app.35c5011c.js"></script>
       <script>
           let app = document.getElementById('app');
           if (app.__vue__) {

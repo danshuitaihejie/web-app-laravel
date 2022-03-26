@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueGtag from 'vue-gtag';
-import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'vue-sequence/dist/vue-sequence.css'
+import App from './App.vue'
 
 Vue.use(VueGtag, {
   config: {
@@ -17,4 +17,4 @@ new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
