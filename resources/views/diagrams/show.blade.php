@@ -2,7 +2,7 @@
 
 <link href="/sequence-viewer/css/app.601d2ada.css" rel="preload" as="style">
 <link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.c239cd2b.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/app.492b16ef.js" rel="preload" as="script">
 <link href="/sequence-viewer/js/chunk-vendors.a8db43b4.js" rel="preload" as="script">
 <link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="stylesheet">
 <link href="/sequence-viewer/css/app.601d2ada.css" rel="stylesheet">
@@ -15,7 +15,7 @@
       <div id="app"></div>
 
       <script src="/sequence-viewer/js/chunk-vendors.a8db43b4.js"></script>
-      <script src="/sequence-viewer/js/app.c239cd2b.js"></script>
+      <script src="/sequence-viewer/js/app.492b16ef.js"></script>
       <script>
           let app = document.getElementById('app');
           if (app.__vue__) {
