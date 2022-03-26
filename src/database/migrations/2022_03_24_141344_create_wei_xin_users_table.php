@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiagramsTable extends Migration
+class CreateWeiXinUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateDiagramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('diagrams', function (Blueprint $table) {
+        Schema::create('wei_xin_users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('content');
-            $table->string('author_id');
-            $table->string('image');
-            $table->boolean('public');
+            $table->string('wxopen_id')->unique();
+            $table->foreignId('user_id')->nullable();
+            $table->string('nickname');
+            $table->string('avatar');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateDiagramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diagrams');
+        Schema::dropIfExists('wei_xin_users');
     }
 }
