@@ -19,7 +19,7 @@
       <script>
           let app = document.getElementById('app');
           if (app.__vue__) {
-              app.__vue__.$store.commit('code',`{{!! $diagram->content !!}}`)
+              app.__vue__.$store.commit('code',`{!! $diagram->content !!}`)
           }
 
           function setTheme(theme) {
