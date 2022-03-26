@@ -1,0 +1,35 @@
+{
+    "env": {
+    "browser": true
+    },
+    "extends": ["plugin:vue/recommended"],
+    "rules": {},
+    "globals": {
+    "ArrayBuffer": true,
+        "Uint8Array": true,
+        "chrome": true,
+        "CodeMirror": true,
+        "Split": true,
+        "emmetCodeMirror": true,
+        "deferred": true,
+        "$": true,
+        "$all": true,
+        "CoffeeScript": true,
+        "Babel": true,
+        "ts": true,
+        "Sass": true,
+        "less": true,
+        "stylus": true,
+        "atomizer": true,
+        "marked": true,
+        "jade": true,
+        "loadJS": true,
+        "esprima": true,
+        "escodegen": true,
+        "utils": true,
+        "Promise": true,
+        "Inlet": true,
+        "db": true,
+        "firebase": true
+}
+}
