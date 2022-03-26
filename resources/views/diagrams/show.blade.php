@@ -7,7 +7,7 @@
 <link href="/sequence-viewer/css/chunk-vendors.d27486a6.css" rel="stylesheet">
 <link href="/sequence-viewer/css/app.601d2ada.css" rel="stylesheet">
 
-<div class="bg-white">
+<div class="bg-white main-container">
   <main class="pt-10 sm:pt-16">
 
     <div class="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-8">
@@ -20,6 +20,14 @@
           let app = document.getElementById('app');
           if (app.__vue__) {
               app.__vue__.$store.commit('code',`{{!! $diagram->content !!}}`)
+          }
+
+          function setTheme(theme) {
+            const e = document.querySelector('.main-container');
+            if(e) {
+              const defaultClass = 'bg-white main-container';
+              e.setAttribute('class', `${defaultClass} ${theme || ''}`);
+            }
           }
       </script>
 
@@ -40,24 +48,18 @@
             <h3 class="text-sm text-gray-900 font-medium">Theme</h3>
 
             <fieldset class="mt-4">
-              <legend class="sr-only">Choose a color</legend>
+              <legend class="sr-only">Choose a theme</legend>
               <div class="flex items-center space-x-3">
 
                 <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
-                  <input type="radio" name="color-choice" value="White" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <input type="radio" name="color-choice" value="White" class="sr-only" aria-labelledby="color-choice-0-label" onclick="setTheme()">
                   <p id="color-choice-0-label" class="sr-only">White</p>
                   <span aria-hidden="true" class="h-8 w-8 bg-white border border-black border-opacity-10 rounded-full"></span>
                 </label>
 
                 <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
-                  <input type="radio" name="color-choice" value="Gray" class="sr-only" aria-labelledby="color-choice-1-label">
-                  <p id="color-choice-1-label" class="sr-only">Gray</p>
-                  <span aria-hidden="true" class="h-8 w-8 bg-gray-200 border border-black border-opacity-10 rounded-full"></span>
-                </label>
-
-                <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-900">
-                  <input type="radio" name="color-choice" value="Black" class="sr-only" aria-labelledby="color-choice-2-label">
-                  <p id="color-choice-2-label" class="sr-only">Black</p>
+                  <input type="radio" name="color-choice" value="Blue" class="sr-only" aria-labelledby="color-choice-1-label" onclick="setTheme('blue-river')">
+                  <p id="color-choice-1-label" class="sr-only">Blue</p>
                   <span aria-hidden="true" class="h-8 w-8 bg-gray-900 border border-black border-opacity-10 rounded-full"></span>
                 </label>
               </div>
