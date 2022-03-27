@@ -1,11 +1,11 @@
 <x-app-layout>
 
-<link href="/sequence-viewer/css/app.1b100cf4.css" rel="preload" as="style">
+<link href="/sequence-viewer/css/app.5dba3785.css" rel="preload" as="style">
 <link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.35c5011c.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/app.1d4373f9.js" rel="preload" as="script">
 <link href="/sequence-viewer/js/chunk-vendors.e8dcf893.js" rel="preload" as="script">
 <link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="stylesheet">
-<link href="/sequence-viewer/css/app.1b100cf4.css" rel="stylesheet">
+<link href="/sequence-viewer/css/app.5dba3785.css" rel="stylesheet">
 
 <div class="bg-white main-container">
   <main class="pt-10 sm:pt-16">
@@ -15,7 +15,7 @@
       <div id="app"></div>
 
       <script src="/sequence-viewer/js/chunk-vendors.e8dcf893.js"></script>
-      <script src="/sequence-viewer/js/app.35c5011c.js"></script>
+      <script src="/sequence-viewer/js/app.1d4373f9.js"></script>
       <script>
           let app = document.getElementById('app');
           if (app.__vue__) {

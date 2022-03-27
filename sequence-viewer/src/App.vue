@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Workspace v-show="isEditMode" />
-    <Viewer v-show="isNotEditMode" />
+    <Viewer v-show="isViewMode" />
   </div>
 </template>
 
@@ -16,7 +16,7 @@ import { Component, Vue } from 'vue-property-decorator';
     isEditMode() {
       return this.$store.getters.isEditMode;
     },
-    isNotEditMode() {
+    isViewMode() {
       return !this.$store.getters.isEditMode;
     }
   },
@@ -33,7 +33,6 @@ export default class App extends Vue {}
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 

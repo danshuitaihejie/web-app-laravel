@@ -26,7 +26,7 @@
     data() {
       return {
         cmOptions: {
-          tabSize: 4,
+          tabSize: 2,
           mode: 'text/javascript',
           theme: 'monokai',
           lineNumbers: true,
@@ -44,7 +44,9 @@
     },
     methods: {
       onEditorCodeChange: function (newCode) {
-        this.$store.dispatch('updateCode', {code: newCode});
+        if(this.$store.getters.isEditMode) {
+          this.$store.dispatch('updateCode', {code: newCode});
+        }
       },
     },
     computed: {
@@ -52,7 +54,7 @@
         return this.$refs.myEditor.Editor
       },
       code() {
-        return this.$store.state.code;
+        return this.$store.getters.isEditMode ? this.$store.state.code : '';
       },
       codemirror() {
         return this.$refs.myCm.codemirror

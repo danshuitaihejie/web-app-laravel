@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div class="viewer">
   <DiagramFrame id="diagram"/>
 </div>
 </template>
@@ -19,6 +19,10 @@ export default class Viewer extends Vue {}
 </script>
 
 <style lang="scss">
+.viewer {
+  text-align: center;
+}
+
 #diagram {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
