@@ -21,11 +21,7 @@
     props: {
     },
     mounted () {
-      // if (window.split) {
-        Split(['#workspace-left', '#workspace-right'], { sizes: [35, 65]})
-      // } else {
-      //   document.querySelector('#workspace-left').style.display = 'none'
-      // }
+      Split(['#workspace-left', '#workspace-right'], { sizes: [40, 60]})
     },
     components: {
       Editor,

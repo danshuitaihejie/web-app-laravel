@@ -2,7 +2,7 @@
 
 <link href="/sequence-viewer/css/app.5dba3785.css" rel="preload" as="style">
 <link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.1d4373f9.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/app.2e8f7d3c.js" rel="preload" as="script">
 <link href="/sequence-viewer/js/chunk-vendors.e8dcf893.js" rel="preload" as="script">
 <link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="stylesheet">
 <link href="/sequence-viewer/css/app.5dba3785.css" rel="stylesheet">
@@ -15,11 +15,14 @@
       <div id="app"></div>
 
       <script src="/sequence-viewer/js/chunk-vendors.e8dcf893.js"></script>
-      <script src="/sequence-viewer/js/app.1d4373f9.js"></script>
+      <script src="/sequence-viewer/js/app.2e8f7d3c.js"></script>
       <script>
           let app = document.getElementById('app');
-          if (app.__vue__) {
-              app.__vue__.$store.commit('code',`{!! $diagram->content !!}`)
+          const vue = app.__vue__;
+          if (vue) {
+              vue.$store.commit('code', `{!! $diagram->content !!}`);
+              vue.$store.dispatch('registerEditModeListener', onEdit);
+              vue.$store.dispatch('registerViewModeListener', onView);
           }
 
           function setTheme(theme) {
@@ -29,11 +32,25 @@
               e.setAttribute('class', `${defaultClass} ${theme || ''}`);
             }
           }
+
+          function onEdit() {
+            const e = document.querySelector('.diagram-info');
+            if(e) {
+              e.style.display = 'none';
+            }
+          }
+
+          function onView() {
+            const e = document.querySelector('.diagram-info');
+            if(e) {
+              e.style.display = '';
+            }
+          }
       </script>
 
     </div>
 
-    <div class="max-w-2xl mx-auto pt-10 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+    <div class="diagram-info max-w-2xl mx-auto pt-10 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
       <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
         <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{{ $diagram->name }}</h1>
         <div>Created at {{ $diagram->created_at }} by {{ $diagram->author_id }}</div>
