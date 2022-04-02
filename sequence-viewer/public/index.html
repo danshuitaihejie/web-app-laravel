@@ -20,7 +20,9 @@
       const vue = app && app.__vue__;
       vue && vue.$store.commit('code',`A.foo {
   B.bar
-}`)
+}`);
+      vue && vue.$store.dispatch('registerEditModeListener', () => console.log('changed to edit mode'));
+      vue && vue.$store.dispatch('registerViewModeListener', () => console.log('changed to view mode'));
 
       function toggle() {
         vue && vue.$store.dispatch('toggleMode')
