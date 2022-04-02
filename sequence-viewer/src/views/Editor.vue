@@ -110,7 +110,7 @@
 
   .body {
     height: 100%;
-    min-height: 400px;
+    min-height: 600px;
   }
 
   .Editor-subheader {
