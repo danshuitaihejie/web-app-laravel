@@ -1,10 +1,10 @@
 <x-app-layout>
 
     <div class="container mx-auto">
-        <div class="grid grid-cols-4 gap-10 h-20 my-6 ">
-            <x-jet-button class="items-center">+ New Diagram</x-jet-button>
-            <x-jet-button class="items-center">+ Import a Diagram</x-jet-button>
-            <x-jet-button class="items-center">+ Invite People!</x-jet-button>
+        <div class="grid grid-flow-col gap-10 h-15 my-6 ">
+            <x-dashboard-button>+ New Diagram</x-dashboard-button>
+            <x-dashboard-button>+ Import a Diagram</x-dashboard-button>
+            <x-dashboard-button class="text-center">+ Invite People!</x-dashboard-button>
         </div>
 
     </div>
