@@ -15,14 +15,15 @@
     <script src="/sequence-viewer/js/chunk-vendors.e8dcf893.js"></script>
     <script src="/sequence-viewer/js/app.e5cbeb74.js"></script>
     <script>
-        window.diagramId = '{{ $diagram->id }}';
+        window.persistedDiagramCode = `{!! $diagram->content !!}`;
         
-        let app = document.getElementById('app');
-        const vue = app.__vue__;
-        if (vue) {
-            vue.$store.commit('code', `{!! $diagram->content !!}`);
-            vue.$store.dispatch('registerEditModeListener', onEdit);
-            vue.$store.dispatch('registerViewModeListener', onView);
+        function setDiagramCode(vueCallback) {
+          let app = document.getElementById('app');
+          const vue = app.__vue__;
+          if (vue) {
+              vue.$store.commit('code', window.persistedDiagramCode);
+              vueCallback && vueCallback(vue);
+          }
         }
 
         function setTheme(theme) {
@@ -46,6 +47,14 @@
             e.style.display = '';
           }
         }
+
+        setDiagramCode(vue => {
+          vue.$store.dispatch('registerEditModeListener', onEdit);
+            vue.$store.dispatch('registerViewModeListener', onView);
+        });
+
+        window.diagramId = '{{ $diagram->id }}';
+        window.resetDiagramCode = setDiagramCode;
     </script>
 
   </div>
