@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('diagrams', DiagramComponent::class)->middleware('auth');
 Route::get('diagrams/{id}', [DiagramComponent::class, 'show']);
+Route::post('diagrams/{id}/content', [DiagramComponent::class, 'updateContent'])->middleware('auth');
 
 Route::get('auth/weixinweb/redirect',[WeiXinService::class,'redirectToLogin'])->name('wx.login.redirect');
 Route::get('auth/weixinweb/callback', [WeiXinService::class,'loginCallback'])->name('wx.login.callback');

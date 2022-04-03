@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Http\Request;
 use App\Models\Diagram;
 use Livewire\Component;
 
@@ -73,6 +74,14 @@ class DiagramComponent extends Component
 
         $this->closeModalPopover();
         $this->resetCreateForm();
+    }
+
+    public function updateContent(Request $request, $id) 
+    {
+        $content = $request->input('content');
+        $diagram = Diagram::findOrFail($id);
+        $diagram->content = $content;
+        $diagram->save();
     }
 
     public function edit($id)

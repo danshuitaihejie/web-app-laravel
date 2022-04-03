@@ -15,6 +15,8 @@
     <script src="/sequence-viewer/js/chunk-vendors.e8dcf893.js"></script>
     <script src="/sequence-viewer/js/app.e5cbeb74.js"></script>
     <script>
+        window.diagramId = '{{ $diagram->id }}';
+        
         let app = document.getElementById('app');
         const vue = app.__vue__;
         if (vue) {
