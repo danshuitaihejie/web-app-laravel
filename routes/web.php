@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardComponent::class)->name('dashboard');
 
-Route::get('diagrams', DiagramComponent::class)->middleware('auth');
+Route::middleware(['auth:sanctum', 'verified'])->get('diagrams', DiagramComponent::class)->middleware('auth')->name('diagrams');
 Route::get('diagrams/{id}', [DiagramComponent::class, 'show']);
 Route::post('diagrams/{id}/content', [DiagramComponent::class, 'updateContent'])->middleware('auth');
 
