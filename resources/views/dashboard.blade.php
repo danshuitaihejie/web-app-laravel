@@ -1,4 +1,3 @@
-<x-app-layout>
 
     <div class="container mx-auto">
         <div class="grid grid-flow-col gap-10 h-15 my-6 ">
@@ -15,19 +14,9 @@
                 <x-jet-label class="text-lg">Explore:</x-jet-label>
             </div>
             <div class="flex flex-row flex-nowrap overflow-x-auto  flex-start gap-8 pt-5 pb-10">
-
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
-                <x-dashboard-explore-card></x-dashboard-explore-card>
+                @foreach($diagrams as $diagram)
+                <x-dashboard-explore-card :diagram="$diagram"></x-dashboard-explore-card>
+                @endforeach
             </div>
         </div>
     </div>
@@ -51,5 +40,3 @@
             </div>
         </div>
     </div>
-
-</x-app-layout>

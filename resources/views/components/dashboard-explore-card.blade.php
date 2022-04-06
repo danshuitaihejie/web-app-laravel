@@ -4,9 +4,9 @@
     </div>
     <div class="flex-1 bg-white p-6 flex flex-col justify-between flex-wrap max-w-fit">
         <div class="flex-1">
-            <a href="#" class="block mt-2">
-                <p class="text-xl font-semibold text-gray-900">Boost your conversion rate</p>
-                <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a href="/diagrams/{{ $diagram->id }}" class="block mt-2">
+                <p class="text-xl font-semibold text-gray-900">{{ $diagram->name }}</p>
+                <p class="mt-3 text-base text-gray-500">{{ $diagram->description }}</p>
             </a>
         </div>
         <div class="mt-6 flex items-center">
@@ -18,12 +18,10 @@
             </div>
             <div class="ml-3">
                 <p class="text-sm font-medium text-gray-900">
-                    <a href="#" class="hover:underline"> Roel Aufderehar </a>
+                    <a href="#" class="hover:underline"> {{ $diagram->author_id }} </a>
                 </p>
                 <div class="flex space-x-1 text-sm text-gray-500">
-                    <time datetime="2020-03-16"> Mar 16, 2020 </time>
-                    <span aria-hidden="true"> &middot; </span>
-                    <span> 6 min read </span>
+                    <time datetime="2020-03-16"> {{ $diagram->created_at }} </time>
                 </div>
             </div>
         </div>
