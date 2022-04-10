@@ -4,6 +4,11 @@ php 版本：php-8.1.3-nts
 node 版本：node v16.14.0 lts/gallium
 
 ---
+## 文档
+
+更多项目概念设定相关文档见：[传送门](https://zenuml.atlassian.net/wiki/spaces/ZEN/pages/1653014543/New+Web+Site)
+
+---
 ## 本地开发环境配置
 1. 把 `nova` 和 `spark-stripe` 两个私有项目文件夹放入 `laravel_modules` 中；
 2. 使用命令 `touch database/database.sqlite` 创建 `database/database.sqlite` 空文件，方便本地测试；
