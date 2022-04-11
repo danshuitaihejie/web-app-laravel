@@ -17,7 +17,7 @@ class DiagramComponent extends Component
 
     public function render()
     {
-        $this->diagrams = Diagram::all();
+        $this->diagrams = Diagram::myDiagrams()->get();
         return view('livewire.diagram');
     }
 
