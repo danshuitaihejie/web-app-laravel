@@ -80,6 +80,9 @@ class DiagramComponent extends Component
     {
         $content = $request->input('content');
         $diagram = Diagram::findOrFail($id);
+
+        $this->checkDiagram($diagram);
+
         $diagram->content = $content;
         $diagram->touch();
         $diagram->save();
@@ -88,6 +91,8 @@ class DiagramComponent extends Component
     public function edit($id)
     {
         $diagram = Diagram::findOrFail($id);
+        $this->checkDiagram($diagram);
+
         $this->diagramId = $id;
         $this->name = $diagram->name;
         $this->description = $diagram->description;
@@ -96,6 +101,13 @@ class DiagramComponent extends Component
         $this->image = $diagram->image;
         $this->public = $diagram->public;
         $this->openModalPopover();
+    }
+
+    private function checkDiagram($diagram)
+    {
+        if($diagram->author_id != auth()->user()->id) {
+            throw new \ErrorException('Unauthorised diagram');
+        }
     }
 
     // delete
