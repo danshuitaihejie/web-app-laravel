@@ -48,7 +48,7 @@ class DiagramComponent extends Component
         $this->name = '';
         $this->description = '';
         $this->content = '';
-        $this->author_id = auth()->user()->name ?? null;
+        $this->author_id = auth()->user()->id;
         $this->image = '';
         $this->public = '';
     }
@@ -81,6 +81,7 @@ class DiagramComponent extends Component
         $content = $request->input('content');
         $diagram = Diagram::findOrFail($id);
         $diagram->content = $content;
+        $diagram->touch();
         $diagram->save();
     }
 
@@ -91,10 +92,9 @@ class DiagramComponent extends Component
         $this->name = $diagram->name;
         $this->description = $diagram->description;
         $this->content = $diagram->content;
-        $this->author_id = auth()->user()->name ?? null;
+        $this->author_id = auth()->user()->id;
         $this->image = $diagram->image;
         $this->public = $diagram->public;
-
         $this->openModalPopover();
     }
 
