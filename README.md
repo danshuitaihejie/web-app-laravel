@@ -39,7 +39,7 @@ Nova 控制台访问地址为: http://localhost:8000/nova/dashboards/main
 在 `utils/sequence-hash-matcher.js` 中，实现了一个自动同步 `sequence-viewer/dist/index.html` 到 `resources/views/diagrams/show.blade.php` 的功能，如果修改了相关格式，记得去改这个脚本。该脚本不需要手动执行，它已经在 `packages.json` 中设置为 `build-sequence-core` 的 post script 了。
 
 ### 前台页面权限判断:
-权限的定义请参考或更新：/database/seeders/RolesAndPermissionsSeeder.php
+权限的定义请参考或更新：[RolesAndPermissionsSeeder.php](https://github.com/ZenUml/web-app-laravel/blob/5652de1e843668edb687f932f75f72981bb019e2/database/seeders/RolesAndPermissionsSeeder.php)
 ```
 @role('editor')
 I am a editor!
