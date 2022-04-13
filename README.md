@@ -14,7 +14,7 @@ node 版本：node v16.14.0 lts/gallium
 2. 使用命令 `touch database/database.sqlite` 创建 `database/database.sqlite` 空文件，方便本地测试；
 3. 复制 `.env.example` 到 `.env` ，
     1. 修改 `DB_CONNECTION` 为 `sqlite`, 注释掉 `DB_DATABASE` 字段，（如果必要`DB_DATABASE`需要设置为`database.sqlite` 的绝对路径，不得设置相对路径）；
-    2. 修改 admin 用户邮箱`ADMIN_USER_Email` 和密码`ADMIN_USER_PASSWORD`
+    2. 修改 Nova后台 admin 用户邮箱`ADMIN_USER_Email` 和密码`ADMIN_USER_PASSWORD`
 4. 安装依赖 `composer install` 以及 `npm install`；
 5. 写入数据库和种子数据 `php artisan migrate --seed`；
 6. 编译 UML 内核 `npm run build-sequence-core`；
@@ -29,7 +29,6 @@ Diagrams home page: http://localhost:8000/diagrams
 
 Nova 控制台访问地址为: http://localhost:8000/nova/dashboards/main
 
-要测试网站后台功能，可通过注册页面注册任意用户，然后登录后台管理页面。
 
 > **注意**：每次修改 resources 目录下模板文件后，都需要使用 Laravel Mix 重新编译资源文件，以确保页面正常显示，或参考下文开启热更新功能。
 
