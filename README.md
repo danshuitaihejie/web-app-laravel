@@ -49,7 +49,7 @@ I am not a editor...
 
 
 @hasrole('editor')
-I am a writer!
+I am a editor!
 @else
 I am not a editor...
 @endhasrole
