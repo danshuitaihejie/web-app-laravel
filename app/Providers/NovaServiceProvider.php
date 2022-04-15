@@ -32,17 +32,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ->register();
     }
 
-    /**
-     * Register the Nova gate.
-     *
-     * This gate determines who can access Nova in non-local environments.
-     *
-     * @return void
-     */
-    protected function gate()
+    protected function authorization()
     {
-        Gate::define('viewNova', function ($user) {
-            return $user->hasPermissionTo('view nova');
+        Nova::auth(function ($request) {
+            if($request->user()==null)return true;
+            return $request->user()->hasPermissionTo('view nova');
         });
     }
 
