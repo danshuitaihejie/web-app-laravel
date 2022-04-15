@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
-use App\Modules\WeiXin\UserObserver;
+use App\Modules\Common\UserObserver;
 class AppServiceProvider extends ServiceProvider
 {
     /**
