@@ -36,7 +36,7 @@ Nova 控制台访问地址为: http://localhost:8000/nova/dashboards/main
 在正常启动 PHP 服务后，可执行 `npm run hot` 命令开启热更新。开启后会弹出新的网页，端口默认为 3000，是原本 8000 的反向代理，该代理会自动监控所有 View 的变更并自动刷新页面。
 
 ### sequence 脚本 Hash 同步：
-在 `utils/sequence-hash-matcher.js` 中，实现了一个自动同步 `sequence-viewer/dist/index.html` 到 `resources/views/diagrams/show.blade.php` 的功能，如果修改了相关格式，记得去改这个脚本。该脚本不需要手动执行，它已经在 `packages.json` 中设置为 `build-sequence-core` 的 post script 了。
+在 `utils/sequence-installer.js` 中，实现了一个自动同步 `sequence-viewer/dist/index.html` 到 `resources/views/diagrams/show.blade.php` 的功能，如果修改了相关格式，记得去改这个脚本。该脚本不需要手动执行，它已经在 `packages.json` 中设置为 `build-sequence-core` 的 `post script` 了。
 
 ### 前台页面权限判断:
 权限的定义请参考或更新：[RolesAndPermissionsSeeder.php](https://github.com/ZenUml/web-app-laravel/blob/5652de1e843668edb687f932f75f72981bb019e2/database/seeders/RolesAndPermissionsSeeder.php)

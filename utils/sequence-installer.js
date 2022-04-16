@@ -1,8 +1,18 @@
-const fs = require('fs')
+const fs = require('fs-extra')
 let cssHash
 let cssVendorHash
 let jsHash
 let jsVendorHash
+
+const srcDir = `sequence-viewer/dist/sequence-viewer`;
+const destDir = `public/sequence-viewer`;
+
+// To copy a folder or file
+try {
+    fs.copySync(srcDir, destDir,{ overwrite: true })
+} catch (err) {
+    console.error(err)
+}
 
 try {
     const data = fs.readFileSync('sequence-viewer/dist/index.html', 'utf8')
@@ -29,6 +39,7 @@ try {
     console.error(err)
 }
 
+console.log(`Successfully installed ${srcDir} to ${destDir}`)
 console.log(`CSS hash: ${cssHash}`)
 console.log(`CSS vendor hash: ${cssVendorHash}`)
 console.log(`JS hash: ${jsHash}`)
