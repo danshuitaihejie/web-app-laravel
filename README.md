@@ -2,6 +2,7 @@
 
 php 版本：php-8.1.3-nts
 node 版本：node v16.14.0 lts/gallium
+laravel 版本：laravel v8.75
 
 ---
 ## 文档
