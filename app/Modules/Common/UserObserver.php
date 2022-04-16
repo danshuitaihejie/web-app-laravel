@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\WeiXin;
+namespace App\Modules\Common;
 
 use App\Models\User;
 class UserObserver
@@ -14,5 +14,10 @@ class UserObserver
     public function deleted(User $user)
     {
         $user->deleteWeiXinUser();
+    }
+
+    public function created(User $user)
+    {
+        $user->assignRole('editor');
     }
 }

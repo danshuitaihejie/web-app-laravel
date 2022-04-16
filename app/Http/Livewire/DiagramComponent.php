@@ -17,7 +17,7 @@ class DiagramComponent extends Component
 
     public function render()
     {
-        $this->diagrams = Diagram::all();
+        $this->diagrams = Diagram::myDiagrams()->get();
         return view('livewire.diagram');
     }
 
@@ -48,7 +48,7 @@ class DiagramComponent extends Component
         $this->name = '';
         $this->description = '';
         $this->content = '';
-        $this->author_id = auth()->user()->name ?? null;
+        $this->author_id = auth()->user()->id;
         $this->image = '';
         $this->public = '';
     }
@@ -80,22 +80,34 @@ class DiagramComponent extends Component
     {
         $content = $request->input('content');
         $diagram = Diagram::findOrFail($id);
+
+        $this->checkDiagram($diagram);
+
         $diagram->content = $content;
+        $diagram->touch();
         $diagram->save();
     }
 
     public function edit($id)
     {
         $diagram = Diagram::findOrFail($id);
+        $this->checkDiagram($diagram);
+
         $this->diagramId = $id;
         $this->name = $diagram->name;
         $this->description = $diagram->description;
         $this->content = $diagram->content;
-        $this->author_id = auth()->user()->name ?? null;
+        $this->author_id = auth()->user()->id;
         $this->image = $diagram->image;
         $this->public = $diagram->public;
-
         $this->openModalPopover();
+    }
+
+    private function checkDiagram($diagram)
+    {
+        if($diagram->author_id != auth()->user()->id) {
+            throw new \ErrorException('Unauthorised diagram');
+        }
     }
 
     // delete
