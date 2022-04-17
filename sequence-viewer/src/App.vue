@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Workspace v-show="isEditMode" />
-    <Viewer v-show="isViewMode" />
+    <Workspace v-if="isEditMode" />
+    <Viewer v-if="isViewMode" />
   </div>
 </template>
 
