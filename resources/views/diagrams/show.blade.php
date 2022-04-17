@@ -1,10 +1,10 @@
 <x-app-layout>
 
 <link href="/sequence-viewer/css/app.3631bc76.css" rel="preload" as="style">
-<link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.e5cbeb74.js" rel="preload" as="script">
-<link href="/sequence-viewer/js/chunk-vendors.e8dcf893.js" rel="preload" as="script">
-<link href="/sequence-viewer/css/chunk-vendors.2fc1308b.css" rel="stylesheet">
+<link href="/sequence-viewer/css/chunk-vendors.6a957a39.css" rel="preload" as="style">
+<link href="/sequence-viewer/js/app.0ef189aa.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/chunk-vendors.f8cb7947.js" rel="preload" as="script">
+<link href="/sequence-viewer/css/chunk-vendors.6a957a39.css" rel="stylesheet">
 <link href="/sequence-viewer/css/app.3631bc76.css" rel="stylesheet">
 
 <div class="bg-white main-container">
@@ -12,8 +12,8 @@
 
     <div id="app"></div>
 
-    <script src="/sequence-viewer/js/chunk-vendors.e8dcf893.js"></script>
-    <script src="/sequence-viewer/js/app.e5cbeb74.js"></script>
+    <script src="/sequence-viewer/js/chunk-vendors.f8cb7947.js"></script>
+    <script src="/sequence-viewer/js/app.0ef189aa.js"></script>
     <script>
         window.persistedDiagramCode = `{!! $diagram->content !!}`;
         
