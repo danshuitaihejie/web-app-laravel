@@ -1,6 +1,6 @@
 <div class="flex flex-col rounded-lg shadow-lg overflow-hidden min-w-fit">
     <div class="flex-shrink-0">
-        <img class="h-48 w-full object-cover" src="{{ Illuminate\Support\Facades\Storage::url($diagram->image) }}" alt="">
+        <img class="dashboard-card object-cover" src="{{ Illuminate\Support\Facades\Storage::url($diagram->image) }}" alt="">
     </div>
     <div class="flex-1 bg-white p-6 flex flex-col justify-between flex-wrap max-w-fit">
         <div class="flex-1">
