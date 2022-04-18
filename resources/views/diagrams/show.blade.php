@@ -61,13 +61,7 @@
         const content = getCode();
         const name = getValue('name-input');
         const description = getValue('description-input');
-        await fetch(`/diagrams/${window.diagramId}/content`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({content, name, description})});
-
-        const blob = await document.querySelector('.frame').__vue__.toBlob();
-        const file = new File([blob], 'diagram.png', {type: 'image/png'});
-        const formData  = new FormData();
-        formData.append('file', file);
-        await fetch(`/diagrams/${window.diagramId}/image`, {method: 'POST', body: formData});
+        await Promise.all([updateContent(name, description, content), uploadImage()]);
 
         window.persistedDiagramCode = content;
         window.persistedDiagramName = name;
@@ -78,6 +72,18 @@
 
         view();
         hide('cancel-button');
+    }
+
+    async function updateContent(name, description, content) {
+      return await fetch(`/diagrams/${window.diagramId}/content`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({content, name, description})});
+    }
+
+    async function uploadImage() {
+      const blob = await document.querySelector('.frame').__vue__.toBlob();
+      const file = new File([blob], 'diagram.png', {type: 'image/png'});
+      const formData  = new FormData();
+      formData.append('file', file);
+      return await fetch(`/diagrams/${window.diagramId}/image`, {method: 'POST', body: formData});
     }
 
     function view() {
