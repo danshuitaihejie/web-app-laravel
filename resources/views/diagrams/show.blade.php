@@ -81,7 +81,7 @@
   </span>
 
   <!-- Publish button -->
-  @if (Auth::check())
+  @if (Auth::check() && $diagram->author_id == auth()->user()->id)
   <span id='publish-button' class="sm:ml-3" style="display: none">
     <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" onclick='publish()'>
         <!-- Heroicon name: solid/check -->
