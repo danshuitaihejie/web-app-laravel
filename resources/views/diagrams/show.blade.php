@@ -35,6 +35,12 @@
         const content = getCode();
         await fetch(`/diagrams/${window.diagramId}/content`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({content})});
 
+        const blob = await document.querySelector('.frame').__vue__.toBlob();
+        const file = new File([blob], 'diagram.png', {type: 'image/png'});
+        const formData  = new FormData();
+        formData.append('file', file);
+        await fetch(`/diagrams/${window.diagramId}/image`, {method: 'POST', body: formData});
+
         window.persistedDiagramCode = content;
         view();
         hide('cancel-button');

@@ -88,6 +88,18 @@ class DiagramComponent extends Component
         $diagram->save();
     }
 
+    public function updateImage(Request $request, $id) 
+    {
+        $file = $request->file;
+        $path = $file->store($this->imageStoragePath());
+
+        $diagram = Diagram::findOrFail($id);
+        $this->checkDiagram($diagram);
+        $diagram->image = $path;
+        $diagram->touch();
+        $diagram->save();
+    }
+
     public function edit($id)
     {
         $diagram = Diagram::findOrFail($id);
@@ -103,6 +115,12 @@ class DiagramComponent extends Component
         $this->openModalPopover();
     }
 
+    public function delete($id)
+    {
+        Diagram::find($id)->delete();
+        session()->flash('message', 'Diagram deleted successfully.');
+    }
+
     private function checkDiagram($diagram)
     {
         if($diagram->author_id != auth()->user()->id) {
@@ -110,11 +128,9 @@ class DiagramComponent extends Component
         }
     }
 
-    // delete
-    public function delete($id)
+    private function imageStoragePath()
     {
-        Diagram::find($id)->delete();
-        session()->flash('message', 'Diagram deleted successfully.');
+        return 'public/diagrams/' . auth()->user()->id . '/' . date('Y-m-d');
     }
 
 }
