@@ -1,5 +1,93 @@
 <x-app-layout>
 
+@section('navigation_actions')
+  <script>
+    let isEdit = false;
+    const getCode = () => {
+        const app = document.getElementById('app');
+        const vue = app && app.__vue__;
+        return vue && vue.$store.state.code;
+    };
+    const toggleDisplay = (id, display) => {
+        const e = document.querySelector(`#${id}`);
+        if(e) {
+            e.style.display = display;
+        }
+    };
+    const show = (id) => toggleDisplay(id, '');
+    const hide = (id) => toggleDisplay(id, 'none');
+
+    function dispatch(action) {
+        const app = document.getElementById('app');
+        const vue = app && app.__vue__;
+        vue && vue.$store.dispatch(action);
+    }
+
+    function edit() {
+        dispatch('setEditMode');
+        isEdit = true;
+        hide('edit-button');
+        show('publish-button');
+        show('cancel-button');
+    }
+
+    async function publish() {
+        const content = getCode();
+        await fetch(`/diagrams/${window.diagramId}/content`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({content})});
+
+        window.persistedDiagramCode = content;
+        view();
+        hide('cancel-button');
+    }
+
+    function view() {
+        dispatch('setViewMode');
+
+        isEdit = false;
+        hide('publish-button');
+        show('edit-button');
+    }
+
+    function cancel() {
+        window.resetDiagramCode();
+        view();
+        hide('cancel-button');
+    }
+
+  </script>
+
+  <!-- Edit button -->
+  <span id="edit-button" class="ml-3">
+    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="edit()">
+        <!-- Heroicon name: solid/pencil -->
+        <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+        </svg>
+        Edit
+    </button>
+  </span>
+
+  <!-- Cancel button -->
+  <span id='cancel-button' class="ml-3" style="display: none">
+    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="cancel()">
+        Cancel
+    </button>
+  </span>
+
+  <!-- Publish button -->
+  @if (Auth::check())
+  <span id='publish-button' class="sm:ml-3" style="display: none">
+    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" onclick='publish()'>
+        <!-- Heroicon name: solid/check -->
+        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        Publish
+    </button>
+  </span>
+  @endif
+@endsection
+
 <link href="/sequence-viewer/css/app.3631bc76.css" rel="preload" as="style">
 <link href="/sequence-viewer/css/chunk-vendors.6a957a39.css" rel="preload" as="style">
 <link href="/sequence-viewer/js/app.e79e9023.js" rel="preload" as="script">
