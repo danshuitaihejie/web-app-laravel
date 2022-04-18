@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex" style="width: 100%">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if (Auth::check())
+                @if (Auth::check() && Route::currentRouteName() == 'dashboard')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -22,6 +22,10 @@
                     </x-jet-nav-link>
                 </div>
                 @endif
+
+                <div class="flex flex-col mt-2 ml-2">
+                    @yield('navigation_header')
+                </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

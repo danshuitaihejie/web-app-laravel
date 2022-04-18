@@ -79,11 +79,17 @@ class DiagramComponent extends Component
     public function updateContent(Request $request, $id) 
     {
         $content = $request->input('content');
+        $name = $request->input('name');
+        $description = $request->input('description');
+
         $diagram = Diagram::findOrFail($id);
 
         $this->checkDiagram($diagram);
 
         $diagram->content = $content;
+        $diagram->name = $name;
+        $diagram->description = $description;
+
         $diagram->touch();
         $diagram->save();
     }

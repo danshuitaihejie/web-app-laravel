@@ -1,5 +1,12 @@
 <x-app-layout>
 
+@section('navigation_header')
+@if (Auth::check())
+<input id='name-input' value='{{ $diagram->name }}' size=50 style='display: none'>
+<input id='description-input' value='{{ $diagram->description }}' size=100 style='display: none'>
+@endif
+@endsection
+
 @section('navigation_actions')
   <script>
     let isEdit = false;
@@ -8,14 +15,34 @@
         const vue = app && app.__vue__;
         return vue && vue.$store.state.code;
     };
-    const toggleDisplay = (id, display) => {
-        const e = document.querySelector(`#${id}`);
+    const getValue = id => {
+      const e = document.getElementById(id);
+      if(e) {
+        return e.value;
+      }
+    };
+    const setValue = (id, value) => {
+      const e = document.getElementById(id);
+      if(e) {
+        e.value = value;
+      }
+    };
+    const setText = (id, text) => {
+      const e = document.getElementById(id);
+      if(e) {
+        e.innerText = text;
+      }
+    };
+    const toggleDisplay = (display, ...ids) => {
+      ids.forEach(id => {
+        const e = document.getElementById(id);
         if(e) {
             e.style.display = display;
         }
+      });
     };
-    const show = (id) => toggleDisplay(id, '');
-    const hide = (id) => toggleDisplay(id, 'none');
+    const show = (...ids) => toggleDisplay('', ...ids);
+    const hide = (...ids) => toggleDisplay('none', ...ids);
 
     function dispatch(action) {
         const app = document.getElementById('app');
@@ -27,13 +54,14 @@
         dispatch('setEditMode');
         isEdit = true;
         hide('edit-button');
-        show('publish-button');
-        show('cancel-button');
+        show('publish-button', 'cancel-button', 'name-input', 'description-input');
     }
 
     async function publish() {
         const content = getCode();
-        await fetch(`/diagrams/${window.diagramId}/content`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({content})});
+        const name = getValue('name-input');
+        const description = getValue('description-input');
+        await fetch(`/diagrams/${window.diagramId}/content`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({content, name, description})});
 
         const blob = await document.querySelector('.frame').__vue__.toBlob();
         const file = new File([blob], 'diagram.png', {type: 'image/png'});
@@ -42,6 +70,12 @@
         await fetch(`/diagrams/${window.diagramId}/image`, {method: 'POST', body: formData});
 
         window.persistedDiagramCode = content;
+        window.persistedDiagramName = name;
+        window.persistedDiagramDescription = description;
+
+        setText('name-label', name);
+        setText('description-label', description);
+
         view();
         hide('cancel-button');
     }
@@ -50,12 +84,15 @@
         dispatch('setViewMode');
 
         isEdit = false;
-        hide('publish-button');
+        hide('publish-button', 'name-input', 'description-input');
         show('edit-button');
     }
 
     function cancel() {
         window.resetDiagramCode();
+        setValue('name-input', window.persistedDiagramName);
+        setValue('description-input', window.persistedDiagramDescription);
+
         view();
         hide('cancel-button');
     }
@@ -110,6 +147,8 @@
     <script src="/sequence-viewer/js/app.e79e9023.js"></script>
     <script>
         window.persistedDiagramCode = `{!! $diagram->content !!}`;
+        window.persistedDiagramName = '{{ $diagram->name }}';
+        window.persistedDiagramDescription = '{{ $diagram->description }}';
         
         function setDiagramCode(vueCallback) {
           let app = document.getElementById('app');
@@ -155,7 +194,8 @@
 
   <div class="diagram-info max-w-2xl mx-auto pt-10 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
     <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-      <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{{ $diagram->name }}</h1>
+      <h1 id='name-label' class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{{ $diagram->name }}</h1>
+      <div>Last modified at {{ $diagram->updated_at }} by {{ $diagram->author->name }}</div>
       <div>Created at {{ $diagram->created_at }} by {{ $diagram->author->name }}</div>
     </div>
 
@@ -194,7 +234,7 @@
         <h3 class="sr-only">Description</h3>
 
         <div class="space-y-6">
-          <p class="text-base text-gray-900">{{$diagram->description}}</p>
+          <p id='description-label' class="text-base text-gray-900">{{$diagram->description}}</p>
         </div>
       </div>
 
