@@ -14,6 +14,7 @@ class DiagramComponent extends Component
         $image, $public,
         $created_at, $updated_at;
     public $isModalOpen = 0;
+    public $isMyDiagramOnly = 1;
 
     public function render()
     {
@@ -35,7 +36,7 @@ class DiagramComponent extends Component
         $diagram->content = '';
         $diagram->author_id = auth()->user()->id;
         $diagram->image = '';
-        $diagram->public = '';
+        $diagram->public = 1;
         return view('diagrams.show', ['diagram' => $diagram]);
     }
 
@@ -132,7 +133,7 @@ class DiagramComponent extends Component
         $diagram->content = $content;
         $diagram->author_id = auth()->user()->id;
         $diagram->image = '';
-        $diagram->public = '';
+        $diagram->public = 1;
         $diagram->save();
 
         $file = $request->file;

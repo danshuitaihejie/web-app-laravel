@@ -23,7 +23,11 @@
                         <th class="px-4 py-2">Description</th>
                         <th class="px-4 py-2">Last Modified at</th>
                         <th class="px-4 py-2">Created at</th>
+                        @if($isMyDiagramOnly)
                         <th class="px-4 py-2">Action</th>
+                        @else
+                        <th class="px-4 py-2">Author</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -36,11 +40,16 @@
                         <td class="border px-4 py-2">{{ $diagram->description }}</td>
                         <td class="border px-4 py-2">{{ $diagram->updated_at }}</td>
                         <td class="border px-4 py-2">{{ $diagram->created_at }}</td>
+                        
                         <td class="border px-4 py-2">
+                        @if($isMyDiagramOnly)
                             <button wire:click="edit({{ $diagram->id }})"
                                     class="px-4 py-2 bg-gray-500 text-gray-900 cursor-pointer">Edit</button>
                             <button wire:click="delete({{ $diagram->id }})"
                                     class="px-4 py-2 bg-red-100 text-gray-900 cursor-pointer">Delete</button>
+                        @else
+                            {{ $diagram->author->name}}
+                        @endif
                         </td>
                     </tr>
                     @endforeach

@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\DashboardComponent;
 use App\Http\Livewire\DiagramComponent;
+use App\Http\Livewire\PublicDiagramsComponent;
 use Illuminate\Support\Facades\Route;
 use App\Modules\WeiXin\WeiXinService;
 /*
@@ -22,6 +23,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardComponent::class)->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('diagrams', DiagramComponent::class)->middleware('auth')->name('diagrams');
+Route::get('public-diagrams', PublicDiagramsComponent::class);
 
 Route::get('diagrams/new', [DiagramComponent::class, 'new']); //must be before 'diagrams/{id}'
 Route::post('diagrams', [DiagramComponent::class, 'createNew'])->middleware('auth');

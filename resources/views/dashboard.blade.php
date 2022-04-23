@@ -2,8 +2,12 @@
 <div class="bg-white">
     <div class="container mx-auto">
         <div class="flex pt-5 mx-auto justify-between items-center">
-            <x-jet-label class="text-lg font-semibold">Explore</x-jet-label>
-            <x-jet-label class="text-sm font-semibold">See All >></x-jet-label>
+            <x-jet-label class="text-lg font-semibold">
+                <a href="/public-diagrams">Explore</a>
+            </x-jet-label>
+            <x-jet-label class="text-sm font-semibold">
+                <a href="/public-diagrams">See All >></a>
+            </x-jet-label>
         </div>
         <div class="flex flex-row flex-nowrap overflow-x-auto  flex-start gap-8 pt-5 pb-10">
             @foreach($publicDiagrams as $diagram)
@@ -19,7 +23,10 @@
             <x-jet-label class="text-lg font-semibold">
                 <a href="/diagrams">My Diagrams</a>
             </x-jet-label>
-            <div class="flex justify-end items-center">
+            <x-jet-label class="text-sm font-semibold">
+                <a href="/diagrams">See All >></a>
+            </x-jet-label>
+            <div class="flex justify-end items-center hidden">
                 <x-jet-label class="font-semibold">Search:</x-jet-label>
                 <x-jet-input class="ml-2 mr-5" type="text" placeholder="Search"></x-jet-input>
 
