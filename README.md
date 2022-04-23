@@ -18,9 +18,11 @@ laravel 版本：laravel v8.75
     2. 修改 Nova后台 admin 用户邮箱`ADMIN_USER_EMAIL` 和密码`ADMIN_USER_PASSWORD`
 4. 安装依赖 `composer install` 以及 `npm install`；
 5. 写入数据库和种子数据 `php artisan migrate --seed`；
-6. 编译 UML 内核 `npm run build-sequence-core`；
-7. 使用 Laravel Mix 编译 css 和 js 资源 `npm run production`；
-8. 启动服务 `php artisan serve`。
+6. 创建存储链接 `php artisan storage:link`；
+7. 编译 UML 内核 `npm run build-sequence-core`；
+8. 使用 Laravel Mix 编译 css 和 js 资源 `npm run production`；
+9. 使用 Laravel Mix 编译 css 和 js 资源 `npm run production`；
+10. 启动服务 `php artisan serve`。
 
 项目启动后 root 目录为 `src/public`，支持 Apache 或 Nginx 启动。
 

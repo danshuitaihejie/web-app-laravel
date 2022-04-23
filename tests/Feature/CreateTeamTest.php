@@ -14,6 +14,7 @@ class CreateTeamTest extends TestCase
 
     public function test_teams_can_be_created()
     {
+        return $this->markTestSkipped('team feature disabled.');
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
 
         Livewire::test(CreateTeamForm::class)

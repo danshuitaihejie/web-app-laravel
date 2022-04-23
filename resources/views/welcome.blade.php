@@ -7,6 +7,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Scripts -->
+    <link href="/css/nunito-fonts.css" rel="stylesheet">
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="antialiased bg-gray-100">

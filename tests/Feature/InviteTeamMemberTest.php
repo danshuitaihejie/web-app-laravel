@@ -16,6 +16,7 @@ class InviteTeamMemberTest extends TestCase
 
     public function test_team_members_can_be_invited_to_team()
     {
+        return $this->markTestSkipped('team feature disabled.');
         Mail::fake();
 
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
@@ -33,6 +34,7 @@ class InviteTeamMemberTest extends TestCase
 
     public function test_team_member_invitations_can_be_cancelled()
     {
+        return $this->markTestSkipped('team feature disabled.');
         Mail::fake();
 
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());

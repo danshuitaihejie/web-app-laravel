@@ -3,6 +3,7 @@
 namespace App\Modules\Common;
 
 use App\Models\User;
+use Facades\App\Modules\Role\RoleService;
 class UserObserver
 {
     /**
@@ -18,6 +19,10 @@ class UserObserver
 
     public function created(User $user)
     {
-        $user->assignRole('editor');
+        if(RoleService::existRole('editor')){
+            $user->assignRole('editor');
+        }
+
     }
+
 }
