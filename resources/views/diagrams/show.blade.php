@@ -174,7 +174,7 @@
         window.persistedDiagramCode = `{!! $diagram->content !!}`;
         window.persistedDiagramName = `{{ $diagram->name }}`;
         window.persistedDiagramDescription = `{{ $diagram->description }}`;
-        
+
         function setDiagramCode(vueCallback) {
           let app = document.getElementById('app');
           const vue = app.__vue__;
@@ -249,8 +249,20 @@
               </label>
 
               <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
-                <input type="radio" name="color-choice" value="Blue" class="sr-only" aria-labelledby="color-choice-1-label" onclick="setTheme('blue-river')">
+                <input type="radio" name="color-choice" value="BlackWhite" class="sr-only" aria-labelledby="color-choice-1-label" onclick="setTheme('theme-black-white')">
+                <p id="color-choice-1-label" class="sr-only">Black White</p>
+                <span aria-hidden="true" class="h-8 w-8 bg-gray-900 border border-black border-opacity-10 rounded-full"></span>
+              </label>
+
+              <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
+                <input type="radio" name="color-choice" value="Blue" class="sr-only" aria-labelledby="color-choice-1-label" onclick="setTheme('theme-blue')">
                 <p id="color-choice-1-label" class="sr-only">Blue</p>
+                <span aria-hidden="true" class="h-8 w-8 bg-gray-900 border border-black border-opacity-10 rounded-full"></span>
+              </label>
+
+              <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
+                <input type="radio" name="color-choice" value="StarUML" class="sr-only" aria-labelledby="color-choice-1-label" onclick="setTheme('theme-star-uml')">
+                <p id="color-choice-1-label" class="sr-only">Star UML</p>
                 <span aria-hidden="true" class="h-8 w-8 bg-gray-900 border border-black border-opacity-10 rounded-full"></span>
               </label>
             </div>
