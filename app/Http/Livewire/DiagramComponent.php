@@ -26,6 +26,19 @@ class DiagramComponent extends Component
         return view('diagrams.show', ['diagram' => Diagram::findOrFail($id)]);
     }
 
+    public function new()
+    {
+        $diagram = new Diagram;
+        $diagram->diagramId = '';
+        $diagram->name = '';
+        $diagram->description = '';
+        $diagram->content = '';
+        $diagram->author_id = auth()->user()->id;
+        $diagram->image = '';
+        $diagram->public = '';
+        return view('diagrams.show', ['diagram' => $diagram]);
+    }
+
     public function create()
     {
         $this->resetCreateForm();
@@ -101,6 +114,29 @@ class DiagramComponent extends Component
 
         $diagram = Diagram::findOrFail($id);
         $this->checkDiagram($diagram);
+        $diagram->image = $path;
+        $diagram->touch();
+        $diagram->save();
+    }
+
+
+    public function createNew(Request $request) 
+    {
+        $content = $request->input('content');
+        $name = $request->input('name');
+        $description = $request->input('description');
+
+        $diagram = new Diagram;
+        $diagram->name = $name;
+        $diagram->description = $description;
+        $diagram->content = $content;
+        $diagram->author_id = auth()->user()->id;
+        $diagram->image = '';
+        $diagram->public = '';
+        $diagram->save();
+
+        $file = $request->file;
+        $path = $file->storeAs($this->imageStoragePath(), $diagram->id . '.png'); //TODO: error handling
         $diagram->image = $path;
         $diagram->touch();
         $diagram->save();

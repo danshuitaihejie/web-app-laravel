@@ -2,8 +2,8 @@
 
 @section('navigation_header')
 @if (Auth::check())
-<input id='name-input' value='{{ $diagram->name }}' size=50 style='display: none'>
-<input id='description-input' value='{{ $diagram->description }}' size=100 style='display: none'>
+<input id='name-input' value='{{ $diagram->name }}' size=50 style='display: none' placeholder='Name your diagram here'>
+<input id='description-input' value='{{ $diagram->description }}' size=100 style='display: none' placeholder='Describe your diagram here'>
 @endif
 @endsection
 
@@ -61,7 +61,7 @@
         const content = getCode();
         const name = getValue('name-input');
         const description = getValue('description-input');
-        await Promise.all([updateContent(name, description, content), uploadImage()]);
+        await save(name, description, content);
 
         window.persistedDiagramCode = content;
         window.persistedDiagramName = name;
@@ -84,6 +84,25 @@
       const formData  = new FormData();
       formData.append('file', file);
       return await fetch(`/diagrams/${window.diagramId}/image`, {method: 'POST', body: formData});
+    }
+
+    async function createNew(name, description, content) {
+      const blob = await document.querySelector('.frame').__vue__.toBlob();
+      const file = new File([blob], 'diagram.png', {type: 'image/png'});
+      const formData  = new FormData();
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('content', content);
+      formData.append('file', file);
+      return await fetch(`/diagrams`, {method: 'POST', body: formData});
+    }
+
+    async function save(name, description, content) {
+      if(window.diagramId) {
+        return await Promise.all([updateContent(name, description, content), uploadImage()]);
+      } else {
+        return await createNew(name, description, content);
+      }
     }
 
     function view() {
@@ -194,6 +213,12 @@
 
         window.diagramId = '{{ $diagram->id }}';
         window.resetDiagramCode = setDiagramCode;
+
+        document.onreadystatechange = () => {
+          if(!window.diagramId) {
+            edit();
+          }
+        };
     </script>
 
   </div>
