@@ -156,12 +156,12 @@
   @endif
 @endsection
 
-<link href="/sequence-viewer/css/app.3631bc76.css" rel="preload" as="style">
+<link href="/sequence-viewer/css/app.bbb5f1fc.css" rel="preload" as="style">
 <link href="/sequence-viewer/css/chunk-vendors.6a957a39.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.e79e9023.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/app.29d68c80.js" rel="preload" as="script">
 <link href="/sequence-viewer/js/chunk-vendors.f8cb7947.js" rel="preload" as="script">
 <link href="/sequence-viewer/css/chunk-vendors.6a957a39.css" rel="stylesheet">
-<link href="/sequence-viewer/css/app.3631bc76.css" rel="stylesheet">
+<link href="/sequence-viewer/css/app.bbb5f1fc.css" rel="stylesheet">
 
 <div class="bg-white main-container">
   <div class="mt-6 mx-auto sm:px-6 lg:gap-x-8 lg:px-8">
@@ -169,7 +169,7 @@
     <div id="app"></div>
 
     <script src="/sequence-viewer/js/chunk-vendors.f8cb7947.js"></script>
-    <script src="/sequence-viewer/js/app.e79e9023.js"></script>
+    <script src="/sequence-viewer/js/app.29d68c80.js"></script>
     <script>
         window.persistedDiagramCode = `{!! $diagram->content !!}`;
         window.persistedDiagramName = `{{ $diagram->name }}`;
