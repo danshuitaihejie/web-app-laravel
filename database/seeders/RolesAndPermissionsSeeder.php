@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use Facades\App\Modules\Role\RoleService;
 class RolesAndPermissionsSeeder extends Seeder
 {
     /**
@@ -15,8 +15,13 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
+
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
+        if(RoleService::existRole('admin'))
+        {
+            return;
+        }
 
         Permission::create(['name'=>'view nova']);
 
@@ -28,6 +33,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'publish diagram',
             'unpublish diagram'
         ];
+
         foreach ($diagramPermissionGroup as $value) {
             Permission::create(['name'=>$value]);
         }
@@ -41,6 +47,8 @@ class RolesAndPermissionsSeeder extends Seeder
         $adminRole->givePermissionTo(Permission::all());
 
     }
+
+
 
 
 }
