@@ -2,6 +2,7 @@
 
 php 版本：php-8.1.3-nts
 node 版本：node v16.14.0 lts/gallium
+laravel 版本：laravel v8.75
 
 ---
 ## 文档
@@ -20,7 +21,6 @@ node 版本：node v16.14.0 lts/gallium
 6. 创建存储链接 `php artisan storage:link`；
 7. 编译 UML 内核 `npm run build-sequence-core`；
 8. 使用 Laravel Mix 编译 css 和 js 资源 `npm run production`；
-9. 使用 Laravel Mix 编译 css 和 js 资源 `npm run production`；
 10. 启动服务 `php artisan serve`。
 
 项目启动后 root 目录为 `src/public`，支持 Apache 或 Nginx 启动。
