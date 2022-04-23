@@ -97,7 +97,7 @@ class DiagramComponent extends Component
     public function updateImage(Request $request, $id) 
     {
         $file = $request->file;
-        $path = $file->store($this->imageStoragePath());
+        $path = $file->storeAs($this->imageStoragePath(), $id . '.png'); //TODO: error handling
 
         $diagram = Diagram::findOrFail($id);
         $this->checkDiagram($diagram);
@@ -136,7 +136,7 @@ class DiagramComponent extends Component
 
     private function imageStoragePath()
     {
-        return 'public/diagrams/' . auth()->user()->id . '/' . date('Y-m-d');
+        return 'public/diagrams/' . auth()->user()->id;
     }
 
 }
