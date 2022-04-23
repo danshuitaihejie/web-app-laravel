@@ -172,8 +172,8 @@
     <script src="/sequence-viewer/js/app.e79e9023.js"></script>
     <script>
         window.persistedDiagramCode = `{!! $diagram->content !!}`;
-        window.persistedDiagramName = '{{ $diagram->name }}';
-        window.persistedDiagramDescription = '{{ $diagram->description }}';
+        window.persistedDiagramName = `{{ $diagram->name }}`;
+        window.persistedDiagramDescription = `{{ $diagram->description }}`;
         
         function setDiagramCode(vueCallback) {
           let app = document.getElementById('app');

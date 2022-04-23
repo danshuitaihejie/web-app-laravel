@@ -1,11 +1,3 @@
-<div class="container mx-auto">
-    <div class="grid grid-flow-col gap-10 h-15 my-6 ">
-        <x-dashboard-button>+ New Diagram</x-dashboard-button>
-        <x-dashboard-button>+ Import a Diagram</x-dashboard-button>
-        <x-dashboard-button class="text-center">+ Invite People!</x-dashboard-button>
-    </div>
-
-</div>
 
 <div class="bg-white">
     <div class="container mx-auto">
