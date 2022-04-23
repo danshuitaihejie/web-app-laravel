@@ -1,8 +1,5 @@
 <div>
-    <x-slot name="header">
-        <h2 class="text-center">Laravel 8 Livewire CRUD Demo</h2>
-    </x-slot>
-    <div class="py-12">
+    <div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
                 @if (session()->has('message'))
@@ -15,10 +12,6 @@
                     </div>
                 </div>
                 @endif
-                <button wire:click="create()"
-                        class="my-4 inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base font-bold text-white shadow-sm hover:bg-red-700">
-                    Create Diagram
-                </button>
                 @if($isModalOpen)
                 @include('livewire.create')
                 @endif
@@ -27,8 +20,9 @@
                     <tr class="bg-gray-100">
                         <th class="px-4 py-2 w-20">No.</th>
                         <th class="px-4 py-2">Name</th>
-                        <th class="px-4 py-2">Email</th>
-                        <th class="px-4 py-2">Mobile</th>
+                        <th class="px-4 py-2">Description</th>
+                        <th class="px-4 py-2">Last Modified at</th>
+                        <th class="px-4 py-2">Created at</th>
                         <th class="px-4 py-2">Action</th>
                     </tr>
                     </thead>
@@ -40,12 +34,13 @@
                             <a href="/diagrams/{{ $diagram->id }}">{{ $diagram->name }}</a>
                         </td>
                         <td class="border px-4 py-2">{{ $diagram->description }}</td>
-                        <td class="border px-4 py-2">{{ $diagram->public}}</td>
+                        <td class="border px-4 py-2">{{ $diagram->updated_at }}</td>
+                        <td class="border px-4 py-2">{{ $diagram->created_at }}</td>
                         <td class="border px-4 py-2">
                             <button wire:click="edit({{ $diagram->id }})"
-                                    class="flex px-4 py-2 bg-gray-500 text-gray-900 cursor-pointer">Edit</button>
+                                    class="px-4 py-2 bg-gray-500 text-gray-900 cursor-pointer">Edit</button>
                             <button wire:click="delete({{ $diagram->id }})"
-                                    class="flex px-4 py-2 bg-red-100 text-gray-900 cursor-pointer">Delete</button>
+                                    class="px-4 py-2 bg-red-100 text-gray-900 cursor-pointer">Delete</button>
                         </td>
                     </tr>
                     @endforeach

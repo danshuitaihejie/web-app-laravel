@@ -16,7 +16,9 @@
 <div class="">
     <div class="container py-1 mx-auto">
         <div class="flex py-1 mx-auto pt-5 justify-between items-center">
-            <x-jet-label class="text-lg font-semibold">My Diagrams</x-jet-label>
+            <x-jet-label class="text-lg font-semibold">
+                <a href="/diagrams">My Diagrams</a>
+            </x-jet-label>
             <div class="flex justify-end items-center">
                 <x-jet-label class="font-semibold">Search:</x-jet-label>
                 <x-jet-input class="ml-2 mr-5" type="text" placeholder="Search"></x-jet-input>

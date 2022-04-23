@@ -10,19 +10,6 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                @if (Auth::check() && Route::currentRouteName() == 'dashboard')
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{ route('diagrams') }}" :active="request()->routeIs('diagrams')">
-                        {{ __('Diagrams') }}
-                    </x-jet-nav-link>
-                </div>
-                @endif
-
                 <div class="flex flex-col mt-2 ml-2">
                     @yield('navigation_header')
                 </div>
@@ -34,7 +21,7 @@
 
 
                 <!-- New button -->
-                @if ('dashboard' == Route::currentRouteName())
+                @if ('dashboard' == Route::currentRouteName() || 'diagrams' == Route::currentRouteName())
                 <span id="new-button" class="ml-3">
                     <a href="/diagrams/new" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">
                         New
