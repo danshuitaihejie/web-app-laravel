@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Diagram;
 use App\Models\Team;
 use App\Policies\TeamPolicy;
+use App\Policies\DiagramPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Team::class => TeamPolicy::class,
+        Diagram::class => DiagramPolicy::class,
     ];
 
     /**
