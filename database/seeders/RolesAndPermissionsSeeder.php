@@ -31,7 +31,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'edit diagram',
             'delete diagram',
             'publish diagram',
-            'unpublish diagram'
+            'unpublish diagram',
+            'fork diagram',
         ];
 
         foreach ($diagramPermissionGroup as $value) {
