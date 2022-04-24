@@ -3,8 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,16 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesAndPermissionsSeeder::class,
         ]);
-        $this->createAdminUser();
+
     }
 
-    private function createAdminUser()
-    {
-        $adminUser = User::firstOrCreate([
-            'name' => 'admin',
-            'email' => env('ADMIN_USER_EMAIL',),
-            'password' => Hash::make(env('ADMIN_USER_PASSWORD',)),
-        ]);
-        $adminUser->assignRole('admin');
-    }
+
 }
