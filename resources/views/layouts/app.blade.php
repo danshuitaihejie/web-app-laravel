@@ -18,7 +18,7 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-white">
+        <div class="min-h-screen bg-white font-sans antialiased fixed overflow-hidden w-full min-h-full text-gray-900 dark:text-white bg-white dark:bg-gray-900 flex flex-col">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
@@ -31,7 +31,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="main flex-auto relative border-t border-gray-200 dark:border-gray-800">
                 {{ $slot }}
             </main>
         </div>
