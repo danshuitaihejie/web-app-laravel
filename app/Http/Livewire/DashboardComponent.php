@@ -10,7 +10,7 @@ class DashboardComponent extends Component
 {
     public function render()
     {
-        $this->publicDiagrams = Diagram::publicDiagrams()->take(10)->get();
+        $this->publicDiagrams = Diagram::publicDiagrams()->take(20)->get();
 
         if(auth()->check()) {
             $this->myDiagrams = Diagram::myDiagrams()->take(10)->get();

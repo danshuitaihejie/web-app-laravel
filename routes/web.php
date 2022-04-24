@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Livewire\IndexComponent;
 use App\Http\Livewire\DashboardComponent;
 use App\Http\Livewire\DiagramComponent;
 use App\Http\Livewire\PublicDiagramsComponent;
@@ -17,7 +16,7 @@ use App\Modules\WeiXin\WeiXinService;
 |
 */
 
-Route::get('/', IndexComponent::class);
+Route::get('/', DashboardComponent::class);
 
 Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
 
