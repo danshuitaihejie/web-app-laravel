@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Facades\App\Modules\Role\RoleService;
@@ -47,9 +49,16 @@ class RolesAndPermissionsSeeder extends Seeder
         $adminRole = Role::create(['name' => 'admin']);
         $adminRole->givePermissionTo(Permission::all());
 
+        $this->createAdminUser();
     }
 
-
-
-
+    private function createAdminUser()
+    {
+        $adminUser = User::firstOrCreate([
+            'name' => 'admin',
+            'email' => env('ADMIN_USER_EMAIL',),
+            'password' => Hash::make(env('ADMIN_USER_PASSWORD',)),
+        ]);
+        $adminUser->assignRole('admin');
+    }
 }
