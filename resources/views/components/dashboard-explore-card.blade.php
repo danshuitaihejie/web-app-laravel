@@ -15,7 +15,7 @@
             <div class="flex-shrink-0">
                 <a href="#">
                     <span class="sr-only">{{ $diagram->author->name }}</span>
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                    <img class="h-10 w-10 rounded-full" src="{{ Avatar::create($diagram->author->name)->toBase64() }}" />
                 </a>
             </div>
             <div class="ml-3">

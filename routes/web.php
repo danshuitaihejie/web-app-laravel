@@ -16,11 +16,9 @@ use App\Modules\WeiXin\WeiXinService;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', DashboardComponent::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardComponent::class)->name('dashboard');
+Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('diagrams', DiagramComponent::class)->middleware('auth')->name('diagrams');
 Route::get('public-diagrams', PublicDiagramsComponent::class);
