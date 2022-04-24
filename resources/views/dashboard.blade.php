@@ -9,7 +9,7 @@
                 <a href="/public-diagrams">See All >></a>
             </x-jet-label>
         </div>
-        <div class="flex flex-row flex-nowrap overflow-x-auto  flex-start gap-8 pt-5 pb-10">
+        <div class="@auth flex flex-row flex-nowrap overflow-x-auto flex-start gap-8 pt-5 pb-10 @else grid grid-cols-4 gap-8 py-5 @endif ">
             @foreach($publicDiagrams as $diagram)
             <x-dashboard-explore-card :diagram="$diagram"></x-dashboard-explore-card>
             @endforeach
@@ -17,6 +17,7 @@
     </div>
 </div>
 
+@auth
 <div class="">
     <div class="container py-1 mx-auto">
         <div class="flex py-1 mx-auto pt-5 justify-between items-center">
@@ -48,3 +49,4 @@
         </div>
     </div>
 </div>
+@endif

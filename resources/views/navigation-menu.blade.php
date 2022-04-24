@@ -1,8 +1,8 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="container mx-auto bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 sm:px-6 lg:px-8">
+    <div>
         <div class="flex justify-between h-16">
-            <div class="flex" style="width: 100%">
+            <div class="flex" @hasSection('navigation_actions') style="width: 100%" @endif>
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
@@ -19,14 +19,28 @@
 
                 @yield('navigation_actions')
 
-
-                <!-- New button -->
+                @auth
                 @if ('dashboard' == Route::currentRouteName() || 'diagrams' == Route::currentRouteName())
+                <!-- New button -->
                 <span id="new-button" class="ml-3">
                     <a href="/diagrams/new" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"">
                         New
                     </a>
                 </span>
+                @endif
+                @endif
+
+                @if (Route::has('login'))
+                <div class="justify-between flex items-center">
+                    @auth
+                    @else
+                    <x-welcome-link-button href="{{ route('login') }}" class="pr-4">Log in</x-welcome-link-button>
+
+                    @if (Route::has('register'))
+                    <x-welcome-link-button href="{{ route('register') }}">Register</x-welcome-link-button>
+                    @endif
+                    @endauth
+                </div>
                 @endif
 
                 <!-- Settings Dropdown -->
