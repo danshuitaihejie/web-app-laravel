@@ -156,20 +156,20 @@
   @endif
 @endsection
 
-<link href="/sequence-viewer/css/app.bbb5f1fc.css" rel="preload" as="style">
-<link href="/sequence-viewer/css/chunk-vendors.6a957a39.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.29d68c80.js" rel="preload" as="script">
-<link href="/sequence-viewer/js/chunk-vendors.f8cb7947.js" rel="preload" as="script">
-<link href="/sequence-viewer/css/chunk-vendors.6a957a39.css" rel="stylesheet">
-<link href="/sequence-viewer/css/app.bbb5f1fc.css" rel="stylesheet">
+<link href="/sequence-viewer/css/app.3631bc76.css" rel="preload" as="style">
+<link href="/sequence-viewer/css/chunk-vendors.b87bcfd9.css" rel="preload" as="style">
+<link href="/sequence-viewer/js/app.ed08020e.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/chunk-vendors.6c451840.js" rel="preload" as="script">
+<link href="/sequence-viewer/css/chunk-vendors.b87bcfd9.css" rel="stylesheet">
+<link href="/sequence-viewer/css/app.3631bc76.css" rel="stylesheet">
 
 <div class="bg-white main-container">
   <div class="mt-6 mx-auto sm:px-6 lg:gap-x-8 lg:px-8">
 
     <div id="app"></div>
 
-    <script src="/sequence-viewer/js/chunk-vendors.f8cb7947.js"></script>
-    <script src="/sequence-viewer/js/app.29d68c80.js"></script>
+    <script src="/sequence-viewer/js/chunk-vendors.6c451840.js"></script>
+    <script src="/sequence-viewer/js/app.ed08020e.js"></script>
     <script>
         window.persistedDiagramCode = `{!! $diagram->content !!}`;
         window.persistedDiagramName = `{{ $diagram->name }}`;
@@ -242,16 +242,16 @@
             <legend class="sr-only">Choose a theme</legend>
             <div class="flex items-center space-x-3">
 
-              <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-gray-400">
+              <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none">
                 <input type="radio" name="color-choice" value="White" class="sr-only" aria-labelledby="color-choice-0-label" onclick="setTheme()">
-                <p id="color-choice-0-label" class="sr-only">White</p>
-                <span aria-hidden="true" class="h-8 w-8 bg-white border border-black rounded-full"></span>
+                <p id="color-choice-0-label" class="sr-only">Basic</p>
+                <span aria-hidden="true" class="h-8 w-8 bg-white border border-2 border-black rounded-full"></span>
               </label>
 
               <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none border-black ">
                 <input type="radio" name="color-choice" value="BlackWhite" class="sr-only" aria-labelledby="color-choice-1-label" onclick="setTheme('theme-black-white')">
                 <p id="color-choice-1-label" class="sr-only">Black White</p>
-                <span aria-hidden="true" class="h-8 w-8 bg-white border border-black rounded-full shadow-[2px_2px_0px_rgba(0,0,0,1)]"></span>
+                <span aria-hidden="true" class="h-8 w-8 bg-white border border-2 border-black rounded-full shadow-[2px_2px_0px_rgba(0,0,0,1)]"></span>
               </label>
 
               <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none bg-blue-900">
@@ -260,10 +260,10 @@
                 <span aria-hidden="true" class="h-8 w-8 bg-blue-100 border border-black border-opacity-10 rounded-full"></span>
               </label>
 
-              <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none bg-rose-800">
+              <label class="-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none">
                 <input type="radio" name="color-choice" value="StarUML" class="sr-only" aria-labelledby="color-choice-1-label" onclick="setTheme('theme-star-uml')">
                 <p id="color-choice-1-label" class="sr-only">Star UML</p>
-                <span aria-hidden="true" class="h-8 w-8 bg-amber-200 border border-black border-opacity-10 rounded-full"></span>
+                <span aria-hidden="true" class="h-8 w-8 bg-[#fffec8] border border-2 border-[#b94065] rounded-full"></span>
               </label>
             </div>
           </fieldset>
