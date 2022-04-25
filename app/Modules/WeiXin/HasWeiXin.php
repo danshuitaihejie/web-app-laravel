@@ -3,10 +3,9 @@
 namespace App\Modules\WeiXin;
 
 use App\Models\WeiXinUser;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Laravel\Jetstream\HasProfilePhoto;
 use Facades\App\Modules\WeiXin\WeiXinService;
+use Facades\Laravolt\Avatar\Avatar;
 
 trait HasWeiXin
 {
@@ -43,25 +42,11 @@ trait HasWeiXin
 
     public function getProfilePhotoUrlAttribute()
     {
-        $photoUrl= $this->getProfilePhotoUrlAttributeOrignal();
-
-        if($photoUrl!=null
-            && $photoUrl!=$this->defaultProfilePhotoUrl()
-        )return  $photoUrl;
-
         $avatar= $this->getWeiXinAvatar();
         if($avatar!=null) return  $avatar;
 
-        $publicPhotoUrl=$this->getPublicPhotoUrlByEmail();
-        if($publicPhotoUrl!=null)return  $publicPhotoUrl;
+        return Avatar::create($this->name)->toBase64();
 
-        return  $photoUrl;
-    }
-
-    private  function  getPublicPhotoUrlByEmail(): ?string
-    {
-        if($this->email=='') return  null;
-        return 'https://secure.gravatar.com/avatar/'.md5(Str::lower($this->email)).'?size=512';
     }
 
     public function getEmailAttribute($email)
