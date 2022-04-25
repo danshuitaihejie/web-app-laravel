@@ -45,7 +45,7 @@ trait HasWeiXin
         $avatar= $this->getWeiXinAvatar();
         if($avatar!=null) return  $avatar;
 
-        return Avatar::create($this->name)->toBase64();;
+        return Avatar::create($this->name)->toBase64();
 
     }
 
