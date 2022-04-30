@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div>
         <div class="flex justify-between h-16">
-            <div class="flex" @hasSection('navigation_actions') style="width: 100%" @endif>
+            <div class="flex" @auth @hasSection('navigation_actions') style="width: 100%" @endif @endif>
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
@@ -31,7 +31,7 @@
                 @endif
 
                 @if (Route::has('login'))
-                <div class="justify-between flex items-center">
+                <div class="justify-between flex items-center ml-3">
                     @auth
                     @else
                     <x-welcome-link-button href="{{ route('login') }}" class="pr-4">Log in</x-welcome-link-button>
