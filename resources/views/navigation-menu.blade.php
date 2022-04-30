@@ -10,7 +10,7 @@
                     </a>
                 </div>
 
-                <div class="flex flex-col mt-2 ml-2">
+                <div class="flex flex-col w-full">
                     @yield('navigation_header')
                 </div>
             </div>

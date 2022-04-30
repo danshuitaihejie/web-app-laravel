@@ -1,10 +1,32 @@
 <x-app-layout>
 
 @section('navigation_header')
-    <input id='name-input' value='{{ $diagram->name }}' size=50 style='display: none' placeholder='Name your diagram here'>
-    <input id='description-input' value='{{ $diagram->description }}' size=100 style='display: none' placeholder='Describe your diagram here'>
-    <label id="name-label">{{ $diagram->name }}</label>
-    <lable id="description-label">{{$diagram->description}}</lable>
+    <fieldset id="diagram-meta-input" style="display: none">
+        <div class="mt-1 bg-white rounded-md shadow-sm -space-y-px">
+            <div>
+                <label for="name-input" class="sr-only">Diagram Name</label>
+                <input id='name-input' type="text" name="name" class='py-1 focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-base font-bold border-gray-300' value='{{ $diagram->name }}' size=50 placeholder='Name your diagram here'>
+            </div>
+            <div class="flex -space-x-px">
+                <div class="w-1/2 flex-1 min-w-0">
+                    <label for="description-input" class="sr-only">Description</label>
+                    <input id='description-input' type="text" name="description" class='py-1 focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-xs border-gray-300' value='{{ $diagram->description }}' size=100 placeholder='Describe your diagram here'>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="diagram-meta-label">
+        <div class="mt-1 bg-white rounded-md shadow-sm -space-y-px">
+            <div>
+                <label id="name-label" class='border border-transparent px-3 py-1 focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-t-md bg-transparent focus:z-10 sm:text-base font-bold border-gray-300'>{{ $diagram->name }}</label>
+            </div>
+            <div class="flex -space-x-px">
+                <div class="w-1/2 flex-1 min-w-0">
+                    <label id="description-label" class='border border-transparent px-3 py-1 focus:ring-indigo-500 focus:border-indigo-500 relative block w-full rounded-none rounded-b-md bg-transparent focus:z-10 sm:text-xs border-gray-300'>{{$diagram->description}}</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
 @endsection
 
 @section('navigation_actions')
@@ -53,8 +75,8 @@
     function edit() {
         dispatch('setEditMode');
         isEdit = true;
-        hide('edit-button', 'name-label', 'description-label');
-        show('publish-button', 'cancel-button', 'name-input', 'description-input');
+        hide('edit-button', 'diagram-meta-label');
+        show('publish-button', 'cancel-button', 'diagram-meta-input');
     }
 
     async function publish() {
@@ -71,7 +93,7 @@
         setText('description-label', description);
 
         view();
-        show('name-label', 'description-label');
+        show('diagram-meta-label');
 
         hide('cancel-button');
     }
@@ -111,8 +133,8 @@
         dispatch('setViewMode');
 
         isEdit = false;
-        hide('publish-button', 'name-input', 'description-input');
-        show('edit-button', 'name-label', 'description-label');
+        hide('publish-button', 'diagram-meta-input');
+        show('edit-button', 'diagram-meta-label');
     }
 
     function cancel() {
