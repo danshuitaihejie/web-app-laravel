@@ -17,7 +17,7 @@ laravel 版本：laravel v8.75
     1. 修改 `DB_CONNECTION` 为 `sqlite`, 注释掉 `DB_DATABASE` 字段，（如果必要`DB_DATABASE`需要设置为`database.sqlite` 的绝对路径，不得设置相对路径）；
     2. 修改 Nova后台 admin 用户邮箱`ADMIN_USER_EMAIL` 和密码`ADMIN_USER_PASSWORD`
 4. 安装依赖 `composer install` 以及 `npm install`；
-5. 写入数据库和种子数据 `php artisan migrate --seed`；
+5. 写入数据库和种子数据 `php artisan migrate --seed`，或直接重置数据库`php artisan migrate:fresh --seed`（约等于重建数据库和表）；
 6. 创建存储链接 `php artisan storage:link`；
 7. 编译 UML 内核 `npm run build-sequence-core`；
 8. 使用 Laravel Mix 编译 css 和 js 资源 `npm run production`；

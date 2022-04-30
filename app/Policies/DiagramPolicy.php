@@ -61,7 +61,7 @@ class DiagramPolicy
      */
     public function update(User $user, Diagram $diagram)
     {
-        logger('DiagramPolicy update');
+        logger('DiagramPolicy update.$user->id:'.$user->id.'  $diagram->author_id:'.$diagram->author_id);
         if(!$user->hasPermissionTo('edit diagram'))
         {
             return  false;
@@ -71,7 +71,7 @@ class DiagramPolicy
         {
             return  true;
         }
-        return $user->id === $diagram->author_id;
+        return $user->id == $diagram->author_id;
     }
 
     /**
@@ -92,7 +92,7 @@ class DiagramPolicy
         {
             return  true;
         }
-        return $user->id === $diagram->author_id;
+        return $user->id == $diagram->author_id;
     }
 
     /**
@@ -125,6 +125,6 @@ class DiagramPolicy
         {
             return  true;
         }
-        return $user->id === $diagram->author_id;
+        return $user->id == $diagram->author_id;
     }
 }
