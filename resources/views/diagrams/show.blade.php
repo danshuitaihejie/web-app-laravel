@@ -1,13 +1,10 @@
 <x-app-layout>
 
 @section('navigation_header')
-    @if (Auth::check())
     <input id='name-input' value='{{ $diagram->name }}' size=50 style='display: none' placeholder='Name your diagram here'>
     <input id='description-input' value='{{ $diagram->description }}' size=100 style='display: none' placeholder='Describe your diagram here'>
-    @else
-    {{ $diagram->name }}
-    {{$diagram->description}}
-    @endif
+    <label id="name-label">{{ $diagram->name }}</label>
+    <lable id="description-label">{{$diagram->description}}</lable>
 @endsection
 
 @section('navigation_actions')
@@ -56,7 +53,7 @@
     function edit() {
         dispatch('setEditMode');
         isEdit = true;
-        hide('edit-button');
+        hide('edit-button', 'name-label', 'description-label');
         show('publish-button', 'cancel-button', 'name-input', 'description-input');
     }
 
@@ -74,6 +71,8 @@
         setText('description-label', description);
 
         view();
+        show('name-label', 'description-label');
+
         hide('cancel-button');
     }
 
@@ -113,7 +112,7 @@
 
         isEdit = false;
         hide('publish-button', 'name-input', 'description-input');
-        show('edit-button');
+        show('edit-button', 'name-label', 'description-label');
     }
 
     function cancel() {
