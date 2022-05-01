@@ -222,8 +222,8 @@
 
 <link href="/sequence-viewer/css/app.3631bc76.css" rel="preload" as="style">
 <link href="/sequence-viewer/css/chunk-vendors.4ed0ffbe.css" rel="preload" as="style">
-<link href="/sequence-viewer/js/app.7044fef4.js" rel="preload" as="script">
-<link href="/sequence-viewer/js/chunk-vendors.f442ade6.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/app.27dd68d5.js" rel="preload" as="script">
+<link href="/sequence-viewer/js/chunk-vendors.89ee89b7.js" rel="preload" as="script">
 <link href="/sequence-viewer/css/chunk-vendors.4ed0ffbe.css" rel="stylesheet">
 <link href="/sequence-viewer/css/app.3631bc76.css" rel="stylesheet">
 
@@ -232,8 +232,8 @@
 
     <div id="app"></div>
 
-    <script src="/sequence-viewer/js/chunk-vendors.f442ade6.js"></script>
-    <script src="/sequence-viewer/js/app.7044fef4.js"></script>
+    <script src="/sequence-viewer/js/chunk-vendors.89ee89b7.js"></script>
+    <script src="/sequence-viewer/js/app.27dd68d5.js"></script>
     <script>
         window.persistedDiagramCode = `{!! $diagram->content !!}`;
         window.persistedDiagramName = `{{ $diagram->name }}`;
