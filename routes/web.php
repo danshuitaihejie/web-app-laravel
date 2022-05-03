@@ -18,6 +18,13 @@ use App\Modules\WeiXin\WeiXinService;
 
 Route::get('/', DashboardComponent::class);
 
+if(!app()->environment("local"))
+{
+    Route::get('login', function () {
+        return redirect(route('wx.login.redirect'));
+    })->name('login');;
+}
+
 Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('diagrams', DiagramComponent::class)->middleware('auth')->name('diagrams');

@@ -10,11 +10,6 @@
 
     <div class="mt-6 grid grid-cols-1 gap-1">
             <div>
-                <a href="{{ route('register') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                    <span>Register</span>
-                </a>
-            </div>
-            <div>
                 <a href="{{ route('wx.login.redirect') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                     <span class="sr-only">Sign in with Wechat</span>
                     <svg class="w-6 h-6"  viewBox="0 0 1484 1200" aria-hidden="true">
